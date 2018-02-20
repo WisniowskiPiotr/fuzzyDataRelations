@@ -4,11 +4,11 @@ using System.IO;
 
 namespace fuzzyDataRelations
 {
-    class Program
+    public class Program
     {
         static string filePath = "data\\";
         static string fileShell = "publish.ps1";
-        static void Main(string[] args)
+        public static void Main()
         {
             Console.WriteLine("Statring to run!");
             string fileName;
@@ -20,12 +20,14 @@ namespace fuzzyDataRelations
                 time++;
                 word = GenerateRandomWord(time);
                 block = GenerateRandomBlockFromData(word);
-                fileName = filePath + word + ".cs";
+                fileName = word + ".cs";
             } while (File.Exists(fileName));
             File.WriteAllText(fileName, block);
             if (File.Exists(fileShell))
                 File.Delete(fileShell);
             File.WriteAllText(fileShell, "" +
+                "Add-Type -Path Program.cs Sanitizer.cs \n" +
+                "[fuzzyDataRelations.Program]::Main() \n" +
                 "git add -A \n" +
                 "git commit -a -m \"some tests + new "+ word + " class\" \n" +
                 "git push origin master \n" +
