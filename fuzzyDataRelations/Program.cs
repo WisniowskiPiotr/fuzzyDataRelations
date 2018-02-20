@@ -7,20 +7,29 @@ namespace fuzzyDataRelations
     class Program
     {
         static string filePath = "data\\";
+        static string fileShell = "publish.ps1";
         static void Main(string[] args)
         {
             Console.WriteLine("Statring to run!");
             string fileName;
             string block;
+            string word;
             int time=0;
             do
             {
                 time++;
-                string word = GenerateRandomWord(time);
+                word = GenerateRandomWord(time);
                 block = GenerateRandomBlockFromData(word);
                 fileName = filePath + word + ".cs";
             } while (File.Exists(fileName));
             File.WriteAllText(fileName, block);
+            if (File.Exists(fileShell))
+                File.Delete(fileShell);
+            File.WriteAllText(fileShell, "" +
+                "git add -A \n" +
+                "git commit -a -m \"some tests + new "+ word + " class\" \n" +
+                "git push origin master \n" +
+                "");
         }
 
         private static string GenerateRandomWord(int time)
