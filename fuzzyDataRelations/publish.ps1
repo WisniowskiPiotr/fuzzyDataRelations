@@ -1,7 +1,5 @@
-Add-Type -Path Program.cs -Path Sanitizer.cs 
+Add-Type -Path Program.cs Sanitizer.cs 
 [fuzzyDataRelations.Program]::Main() 
 git add -A 
-git commit -a -m "some tests + new SummaryTextUsing class" 
+git commit -a -m "some tests + new TheFunctionsRulePublicValue class" 
 git push origin master 
-
-pause
