@@ -1,4 +1,4 @@
-Add-Type -Path [Program.cs Sanitizer.cs ]
+Add-Type -Path Program.cs -Path Sanitizer.cs 
 [fuzzyDataRelations.Program]::Main() 
 git add -A 
 git commit -a -m "some tests + new SummaryTextUsing class" 
