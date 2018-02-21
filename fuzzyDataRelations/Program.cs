@@ -26,11 +26,23 @@ namespace fuzzyDataRelations
             if (File.Exists(fileShell))
                 File.Delete(fileShell);
             File.WriteAllText(fileShell, "" +
-                "Add-Type -Path Program.cs Sanitizer.cs \n" +
-                "[fuzzyDataRelations.Program]::Main() \n" +
-                "git add -A \n" +
-                "git commit -a -m \"some tests + new "+ word + " class\" \n" +
-                "git push origin master \n" +
+                "$runToday = Get-Random -Minimum 0 -Maximum 4 \n" +
+                "If( $runToday -gt 1) { \n" +
+                "	$number = Get-Random -Minimum 1 -Maximum 8 \n" +
+                "	Write-Host $number \" times\" \n" +
+                "	for($i=0 \n" +
+                "     $i -le $number \n" +
+                "     $i++){ \n" +
+                "		$time = Get-Random -Minimum 1 -Maximum 8000 \n" +
+                "		Write-Host $time + \" seconds\" \n" +
+                "		Start-Sleep -s $time \n" +
+                "		Add-Type -Path Program.cs, Sanitizer.cs  \n" +
+                "		[fuzzyDataRelations.Program]::Main()  \n" +
+                "		git add -A  \n" +
+                "		git commit -a -m \"some tests + new DefaultBreakCollection class\"  \n" +
+                "		git push origin master \n" +
+                "	}  \n" +
+                "} \n" +
                 "");
         }
 
