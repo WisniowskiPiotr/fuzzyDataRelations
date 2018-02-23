@@ -11,7 +11,7 @@ If( $runToday -gt 1) {
 		Add-Type -Path Program.cs, Sanitizer.cs  
 		[fuzzyDataRelations.Program]::Main()  
 		git add -A  
-		git commit -a -m "some tests + new DefaultBreakCollection class"  
+		git commit -a -m "SystemUsingThe class bug" 
 		git push origin master 
 	}  
 } 

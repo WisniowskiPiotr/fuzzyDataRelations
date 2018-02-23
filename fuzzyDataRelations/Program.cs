@@ -8,6 +8,17 @@ namespace fuzzyDataRelations
     {
         static string filePath = "data\\";
         static string fileShell = "publish.ps1";
+        static string[] messages = {
+            "some tests {0} class",
+            "debuging {0} class",
+            "working on {0}",
+            "{0} class bug",
+            "fixing {0}",
+            "trying again {0}",
+            "next staff {0}",
+            "{0} gui",
+            "{0} update",
+        };
         public static void Main()
         {
             Console.WriteLine("Statring to run!");
@@ -22,9 +33,12 @@ namespace fuzzyDataRelations
                 block = GenerateRandomBlockFromData(word);
                 fileName = word + ".cs";
             } while (File.Exists(fileName));
+            Console.WriteLine("Got new word " + word);
             File.WriteAllText(fileName, block);
             if (File.Exists(fileShell))
                 File.Delete(fileShell);
+            string message = string.Format(messages[(new Random()).Next(0, messages.Length - 1)], word);
+            Console.WriteLine("Got message " + message);
             File.WriteAllText(fileShell, "" +
                 "$runToday = Get-Random -Minimum 0 -Maximum 4 \n" +
                 "If( $runToday -gt 1) { \n" +
@@ -39,11 +53,12 @@ namespace fuzzyDataRelations
                 "		Add-Type -Path Program.cs, Sanitizer.cs  \n" +
                 "		[fuzzyDataRelations.Program]::Main()  \n" +
                 "		git add -A  \n" +
-                "		git commit -a -m \"some tests + new DefaultBreakCollection class\"  \n" +
+                "		git commit -a -m \"" + message + "\" \n" +
                 "		git push origin master \n" +
                 "	}  \n" +
                 "} \n" +
                 "");
+            Console.WriteLine("Finished. " );
         }
 
         private static string GenerateRandomWord(int time)
