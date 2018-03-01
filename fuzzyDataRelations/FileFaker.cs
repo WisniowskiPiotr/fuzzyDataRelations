@@ -11,13 +11,18 @@ namespace fuzzyDataRelations
 
         public static void GetRandomFile(out string fileName, out string fileContent)
         {
-            string[] paths = Directory.GetFiles(filePath, "*.cs");
-            int randomInt = (new Random()).Next(0, paths.Length - 1);
-            fileName = paths[randomInt];//Path.GetFileNameWithoutExtension(paths[randomInt]);
-            fileContent = File.ReadAllText(paths[randomInt]);
+            fileName = GetRandomFileName();
+            fileContent = File.ReadAllText(fileName);
         }
 
-        public static string GenerateRandomWord(int time)
+        public static string GetRandomFileName()
+        {
+            string[] paths = Directory.GetFiles(filePath, "*.cs");
+            int randomInt = (new Random()).Next(0, paths.Length - 1);
+            return paths[randomInt];//Path.GetFileNameWithoutExtension(paths[randomInt]);
+        }
+
+        public static string GenerateRandomWord(int time=0)
         {
             string result = string.Empty;
             List<string> words = GetSomeWordsFromData();
@@ -60,7 +65,7 @@ namespace fuzzyDataRelations
         public string FileContent;
         public string FullFileName;
 
-        FileFaker(string fullFileName = "")
+        public FileFaker(string fullFileName = "")
         {
             
             if (string.IsNullOrWhiteSpace(fullFileName))
@@ -104,5 +109,12 @@ namespace fuzzyDataRelations
             return word;
         }
 
+        public string FakeFile()
+        {
+            string word = GenerateRandomWord();
+            ReplaceRandomWordFromFile(word);
+            Save();
+            return word;
+        }
     }
 }

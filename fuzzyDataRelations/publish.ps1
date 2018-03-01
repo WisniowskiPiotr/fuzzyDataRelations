@@ -1,17 +1,9 @@
-$runToday = Get-Random -Minimum 0 -Maximum 4 
-If( $runToday -gt 1) { 
-	$number = Get-Random -Minimum 1 -Maximum 8 
-	Write-Host $number " times" 
-	for($i=0 
-     $i -le $number 
-     $i++){ 
-		$time = Get-Random -Minimum 1 -Maximum 8000 
-		Write-Host $time + " seconds" 
-		Start-Sleep -s $time 
-		Add-Type -Path Program.cs, Sanitizer.cs  
+       
+		Add-Type -Path Program.cs, Sanitizer.cs, FileFaker.cs  
 		[fuzzyDataRelations.Program]::Main()  
 		git add -A  
-		git commit -a -m "next staff ValueGetUsingThisCentroid" 
+		git commit -a -m "debuging  class" 
 		git push origin master 
-	}  
-} 
+       
+		$time = Get-Random -Minimum 100 -Maximum 8000 
+		Write-Host $time + " seconds" 
