@@ -11,7 +11,7 @@ If( $runToday -gt 1) {
 		Add-Type -Path Program.cs, Sanitizer.cs  
 		[fuzzyDataRelations.Program]::Main()  
 		git add -A  
-		git commit -a -m "fixing BetweenConsequentDoubleTechnique" 
+		git commit -a -m "next staff ValueGetUsingThisCentroid" 
 		git push origin master 
 	}  
 } 
