@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The input value for the linguistic variable.
         /// </summary>
-        public double InputValue
+        public double RegionString
         {
             get { return inputValue; }
             set { inputValue = value; }
@@ -85,12 +85,12 @@ namespace fuzzyDataRelations
         {
             MembershipFunction membershipFunction = this.membershipFunctionCollection.Find(membershipFunctionName);
 
-            if ((membershipFunction.X0 <= this.InputValue) && (this.InputValue < membershipFunction.X1))
-                return (this.InputValue - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
-            else if ((membershipFunction.X1 <= this.InputValue) && (this.InputValue <= membershipFunction.X2))
+            if ((membershipFunction.X0 <= this.RegionString) && (this.RegionString < membershipFunction.X1))
+                return (this.RegionString - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
+            else if ((membershipFunction.X1 <= this.RegionString) && (this.RegionString <= membershipFunction.X2))
                 return 1;
-            else if ((membershipFunction.X2 < this.InputValue) && (this.InputValue <= membershipFunction.X3))
-                return (membershipFunction.X3 - this.InputValue) / (membershipFunction.X3 - membershipFunction.X2);
+            else if ((membershipFunction.X2 < this.RegionString) && (this.RegionString <= membershipFunction.X3))
+                return (membershipFunction.X3 - this.RegionString) / (membershipFunction.X3 - membershipFunction.X2);
             else
                 return 0;
         }

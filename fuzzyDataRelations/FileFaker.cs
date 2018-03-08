@@ -7,7 +7,7 @@ namespace fuzzyDataRelations
 {
     class FileFaker
     {
-        private static string filePath = "data\\";
+        private static string filePath = "d:\\Gambit\\fuzzyDataRelations\\fuzzyDataRelations\\data\\";
 
         public static void GetRandomFile(out string fileName, out string fileContent)
         {
@@ -81,13 +81,15 @@ namespace fuzzyDataRelations
 
         public void Save()
         {
+            if (File.Exists(FullFileName))
+                File.Delete(FullFileName);
             File.WriteAllText(FullFileName, FileContent);
         }
 
         public void ReplaceRandomWordFromFile(string replacement)
         {
             string word = GetRandomWordFromFile();
-            FileContent.Replace(word, replacement);
+            FileContent = FileContent.Replace(word, replacement);
         }
 
         public string GetRandomWordFromFile()
@@ -101,7 +103,7 @@ namespace fuzzyDataRelations
                     int index = FileContent.IndexOf(GetDeclarationsBeginnings[i], searchstart);
                     if (index > 0)
                     {
-                        int spaceindex = FileContent.IndexOf(' ', index + GetDeclarationsBeginnings[i].Length);
+                        int spaceindex = FileContent.IndexOfAny(new char[] {' ','(', ';' }, index + GetDeclarationsBeginnings[i].Length);
                         word = FileContent.Substring(index + GetDeclarationsBeginnings[i].Length, spaceindex - (index + GetDeclarationsBeginnings[i].Length)).Trim();
                     }
                 }
