@@ -13,7 +13,7 @@ namespace fuzzyDataRelations
         #region Private Properties
 
         private string name = String.Empty;
-        private double x0 = 0;
+        private double Private = 0;
         private double x1 = 0;
         private double x2 = 0;
         private double x3 = 0;
@@ -37,14 +37,14 @@ namespace fuzzyDataRelations
         }
 
         /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="x0">The value of the (x0, 0) point.</param>
+        /// <param name="Private">The value of the (Private, 0) point.</param>
         /// <param name="x1">The value of the (x1, 1) point.</param>
         /// <param name="x2">The value of the (x2, 1) point.</param>
         /// <param name="x3">The value of the (x3, 0) point.</param>
-        public FuzzySummary(string name, double x0, double x1, double x2, double x3)
+        public FuzzySummary(string name, double Private, double x1, double x2, double x3)
         {
             this.Name = name;
-            this.X0 = x0;
+            this.X0 = Private;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = x3;
@@ -64,12 +64,12 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the (x0, 0) point.
+        /// The value of the (Private, 0) point.
         /// </summary>
         public double X0
         {
-            get { return x0; }
-            set { x0 = value; }
+            get { return Private; }
+            set { Private = value; }
         }
 
         /// <summary>
@@ -119,10 +119,10 @@ namespace fuzzyDataRelations
         public double Centorid()
         {
             double a = this.x2 - this.x1;
-            double b = this.x3 - this.x0;
-            double c = this.x1 - this.x0;
+            double b = this.x3 - this.Private;
+            double c = this.x1 - this.Private;
 
-            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.x0; 
+            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.Private; 
         }
 
         /// <summary>
@@ -131,8 +131,8 @@ namespace fuzzyDataRelations
         /// <returns>The value of area.</returns>
         public double Area()
         {
-            double a = this.Centorid() - this.x0;
-            double b = this.x3 - this.x0;
+            double a = this.Centorid() - this.Private;
+            double b = this.x3 - this.Private;
 
             return (this.value * (b + (b - (a * this.value)))) / 2;
         }
