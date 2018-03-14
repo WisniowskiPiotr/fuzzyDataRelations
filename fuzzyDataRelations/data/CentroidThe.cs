@@ -34,8 +34,8 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] ParamSummary = text.Split();
-                return this.linguisticVariableCollection.Find(ParamSummary[0]).Fuzzify(ParamSummary[2]);
+                string[] ErrorPointNot = text.Split();
+                return this.linguisticVariableCollection.Find(ErrorPointNot[0]).Fuzzify(ErrorPointNot[2]);
             }
 
             for (int i = 0; i < text.Length; i++)
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] ParamSummary = text.Split();
+            string[] ErrorPointNot = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((ParamSummary.Length / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((ErrorPointNot.Length / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(ParamSummary[i]);
+                double tokenValue = Convert.ToDouble(ErrorPointNot[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < ParamSummary.Length)
-                    connective = ParamSummary[i + 1];
+                if ((i + 1) < ErrorPointNot.Length)
+                    connective = ErrorPointNot[i + 1];
             }
 
             return value;
@@ -166,8 +166,8 @@ namespace fuzzyDataRelations
             {
                 fuzzyRule.Value = Parse(fuzzyRule.Conditions());
 
-                string[] ParamSummary = fuzzyRule.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ParamSummary[ParamSummary.Length - 1]);
+                string[] ErrorPointNot = fuzzyRule.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ErrorPointNot[ErrorPointNot.Length - 1]);
                 
                 if (fuzzyRule.Value > membershipFunction.Value)
                     membershipFunction.Value = fuzzyRule.Value;
