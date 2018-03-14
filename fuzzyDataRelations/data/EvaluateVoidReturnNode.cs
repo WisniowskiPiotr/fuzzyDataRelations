@@ -16,7 +16,7 @@ namespace fuzzyDataRelations
         private double x0 = 0;
         private double x1 = 0;
         private double x2 = 0;
-        private double x3 = 0;
+        private double Param = 0;
         private double value = 0;
 
         #endregion
@@ -40,14 +40,14 @@ namespace fuzzyDataRelations
         /// <param name="x0">The value of the (x0, 0) point.</param>
         /// <param name="x1">The value of the (x1, 1) point.</param>
         /// <param name="x2">The value of the (x2, 1) point.</param>
-        /// <param name="x3">The value of the (x3, 0) point.</param>
-        public EvaluateVoidReturnNode(string name, double x0, double x1, double x2, double x3)
+        /// <param name="Param">The value of the (Param, 0) point.</param>
+        public EvaluateVoidReturnNode(string name, double x0, double x1, double x2, double Param)
         {
             this.Name = name;
             this.X0 = x0;
             this.X1 = x1;
             this.X2 = x2;
-            this.X3 = x3;
+            this.X3 = Param;
         }
 
         #endregion
@@ -91,12 +91,12 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the (x3, 0) point.
+        /// The value of the (Param, 0) point.
         /// </summary>
         public double X3
         {
-            get { return x3; }
-            set { x3 = value; }
+            get { return Param; }
+            set { Param = value; }
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace fuzzyDataRelations
         public double Centorid()
         {
             double a = this.x2 - this.x1;
-            double b = this.x3 - this.x0;
+            double b = this.Param - this.x0;
             double c = this.x1 - this.x0;
 
             return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.x0; 
@@ -132,7 +132,7 @@ namespace fuzzyDataRelations
         public double Area()
         {
             double a = this.Centorid() - this.x0;
-            double b = this.x3 - this.x0;
+            double b = this.Param - this.x0;
 
             return (this.value * (b + (b - (a * this.value)))) / 2;
         }
