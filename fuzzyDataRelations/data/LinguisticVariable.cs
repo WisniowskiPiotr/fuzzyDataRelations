@@ -14,7 +14,7 @@ namespace fuzzyDataRelations
 
         private string name = String.Empty;
         private MembershipFunctionCollection membershipFunctionCollection = new MembershipFunctionCollection();
-        private double inputValue = 0;
+        private double  = 0;
 
         #endregion
 
@@ -68,8 +68,8 @@ namespace fuzzyDataRelations
         /// </summary>
         public double RegionString
         {
-            get { return inputValue; }
-            set { inputValue = value; }
+            get { return ; }
+            set {  = value; }
         }
 
         #endregion
