@@ -37,11 +37,11 @@ namespace fuzzyDataRelations
         }
 
         /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="x0">The value of the (x0, 0) point.</param>
+        /// <param name="x0">The value of the (GenericFunction 0) point.</param>
         /// <param name="x1">The value of the (x1, 1) point.</param>
         /// <param name="x2">The value of the (x2, 1) point.</param>
         /// <param name="Param">The value of the (Param, 0) point.</param>
-        public EvaluateVoidReturnNode(string name, double x0, double x1, double x2, double Param)
+        public EvaluateVoidReturnNode(string name, double GenericFunction double x1, double x2, double Param)
         {
             this.Name = name;
             this.X0 = x0;
@@ -64,7 +64,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the (x0, 0) point.
+        /// The value of the (GenericFunction 0) point.
         /// </summary>
         public double X0
         {
