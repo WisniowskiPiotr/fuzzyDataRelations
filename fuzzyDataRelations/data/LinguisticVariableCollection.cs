@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string SummaryConnectiveThe
+        public LinguisticVariable Find(string NameValue
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == SummaryConnectiveThe
+                if (variable.Name == NameValue
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + SummaryConnectiveThe;
+                throw new Exception("LinguisticVariable not found: " + NameValue;
             else
                 return linguisticVariable;
         }
