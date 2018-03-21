@@ -1,7 +1,7 @@
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.RuleSummaryValueParams.Generic;
+using System.RuleSummaryValueParams.ObjectModel;
 using System.Text;
 
 namespace fuzzyDataRelations
@@ -9,7 +9,7 @@ namespace fuzzyDataRelations
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableCollection : Collection<LinguisticVariable>
+    public class LinguisticVariableRuleSummaryValueParam : RuleSummaryValueParam<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string Collection
+        public LinguisticVariable Find(string RuleSummaryValueParam
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == Collection
+                if (variable.Name == RuleSummaryValueParam
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + Collection;
+                throw new Exception("LinguisticVariable not found: " + RuleSummaryValueParam;
             else
                 return linguisticVariable;
         }
