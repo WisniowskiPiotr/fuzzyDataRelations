@@ -34,8 +34,8 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] ErrorPointNot = text.Split();
-                return this.linguisticVariableCollection.Find(ErrorPointNot[0]).Fuzzify(ErrorPointNot[2]);
+                string[] StringVariableCounterThe = text.Split();
+                return this.linguisticVariableCollection.Find(StringVariableCounterThe[0]).Fuzzify(StringVariableCounterThe[2]);
             }
 
             for (int i = 0; i < text.Length; i++)
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] ErrorPointNot = text.Split();
+            string[] StringVariableCounterThe = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((ErrorPointNot.Length / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((StringVariableCounterThe.Length / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(ErrorPointNot[i]);
+                double tokenValue = Convert.ToDouble(StringVariableCounterThe[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < ErrorPointNot.Length)
-                    connective = ErrorPointNot[i + 1];
+                if ((i + 1) < StringVariableCounterThe.Length)
+                    connective = StringVariableCounterThe[i + 1];
             }
 
             return value;
@@ -166,8 +166,8 @@ namespace fuzzyDataRelations
             {
                 fuzzyRule.Value = Parse(fuzzyRule.Conditions());
 
-                string[] ErrorPointNot = fuzzyRule.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ErrorPointNot[ErrorPointNot.Length - 1]);
+                string[] StringVariableCounterThe = fuzzyRule.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(StringVariableCounterThe[StringVariableCounterThe.Length - 1]);
                 
                 if (fuzzyRule.Value > membershipFunction.Value)
                     membershipFunction.Value = fuzzyRule.Value;

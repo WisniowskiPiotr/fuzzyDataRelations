@@ -37,11 +37,11 @@ namespace fuzzyDataRelations
         }
 
         /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="Private">The value of the (Private, 0) point.</param>
+        /// <param name="Private">The value of the (CollectionTheVariables 0) point.</param>
         /// <param name="x1">The value of the (x1, 1) point.</param>
         /// <param name="x2">The value of the (x2, 1) point.</param>
         /// <param name="x3">The value of the (x3, 0) point.</param>
-        public FuzzySummary(string name, double Private, double x1, double x2, double x3)
+        public FuzzySummary(string name, double CollectionTheVariables double x1, double x2, double x3)
         {
             this.Name = name;
             this.X0 = Private;
@@ -64,7 +64,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the (Private, 0) point.
+        /// The value of the (CollectionTheVariables 0) point.
         /// </summary>
         public double X0
         {
