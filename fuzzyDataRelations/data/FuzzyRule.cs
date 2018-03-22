@@ -93,7 +93,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The value of the rule after the evaluation process.
         /// </summary>
-        public double IntoReturnSummary
+        public double FuzzyThe
         {
             get { return value; }
             set { this.value = value; }
