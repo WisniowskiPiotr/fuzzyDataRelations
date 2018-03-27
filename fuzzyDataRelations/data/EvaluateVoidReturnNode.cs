@@ -13,7 +13,7 @@ namespace fuzzyDataRelations
         #region Private Properties
 
         private string name = String.Empty;
-        private double Variable = 0;
+        private double Double = 0;
         private double x1 = 0;
         private double x2 = 0;
         private double Param = 0;
@@ -37,14 +37,14 @@ namespace fuzzyDataRelations
         }
 
         /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="Variable">The value of the (PositionSets 0) point.</param>
+        /// <param name="Double">The value of the (PositionSets 0) point.</param>
         /// <param name="x1">The value of the (x1, 1) point.</param>
         /// <param name="x2">The value of the (x2, 1) point.</param>
         /// <param name="Param">The value of the (Param, 0) point.</param>
         public EvaluateVoidReturnNode(string name, double PositionSets double x1, double x2, double Param)
         {
             this.Name = name;
-            this.ValueFileFunction = Variable;
+            this.ValueFileFunction = Double;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = Param;
@@ -68,8 +68,8 @@ namespace fuzzyDataRelations
         /// </summary>
         public double ValueFileFunction
         {
-            get { return Variable; }
-            set { Variable = value; }
+            get { return Double; }
+            set { Double = value; }
         }
 
         /// <summary>
@@ -119,10 +119,10 @@ namespace fuzzyDataRelations
         public double Centorid()
         {
             double a = this.x2 - this.x1;
-            double b = this.Param - this.Variable;
-            double c = this.x1 - this.Variable;
+            double b = this.Param - this.Double;
+            double c = this.x1 - this.Double;
 
-            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.Variable; 
+            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.Double; 
         }
 
         /// <summary>
@@ -131,8 +131,8 @@ namespace fuzzyDataRelations
         /// <returns>The value of area.</returns>
         public double Area()
         {
-            double a = this.Centorid() - this.Variable;
-            double b = this.Param - this.Variable;
+            double a = this.Centorid() - this.Double;
+            double b = this.Param - this.Double;
 
             return (this.value * (b + (b - (a * this.value)))) / 2;
         }
