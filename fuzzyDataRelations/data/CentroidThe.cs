@@ -34,8 +34,8 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] Fcl-likeSet = text.Split();
-                return this.linguisticVariableCollection.Find(Fcl-likeSet[0]).Fuzzify(Fcl-likeSet[2]);
+                string[] Rule = text.Split();
+                return this.linguisticVariableCollection.Find(Rule[0]).Fuzzify(Rule[2]);
             }
 
             for (int i = 0; i < text.Length; i++)
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] Fcl-likeSet = text.Split();
+            string[] Rule = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((Fcl-likeSet.Length / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((Rule.Length / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(Fcl-likeSet[i]);
+                double tokenValue = Convert.ToDouble(Rule[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < Fcl-likeSet.Length)
-                    connective = Fcl-likeSet[i + 1];
+                if ((i + 1) < Rule.Length)
+                    connective = Rule[i + 1];
             }
 
             return value;
@@ -166,8 +166,8 @@ namespace fuzzyDataRelations
             {
                 fuzzyRule.Value = Parse(fuzzyRule.Conditions());
 
-                string[] Fcl-likeSet = fuzzyRule.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Fcl-likeSet[Fcl-likeSet.Length - 1]);
+                string[] Rule = fuzzyRule.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Rule[Rule.Length - 1]);
                 
                 if (fuzzyRule.Value > membershipFunction.Value)
                     membershipFunction.Value = fuzzyRule.Value;
