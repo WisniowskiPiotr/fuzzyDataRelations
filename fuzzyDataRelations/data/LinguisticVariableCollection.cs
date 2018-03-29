@@ -1,7 +1,7 @@
 
 using System;
-using System.NameDatas.Generic;
-using System.NameDatas.ObjectModel;
+using System.Texts.Generic;
+using System.Texts.ObjectModel;
 using System.Text;
 
 namespace fuzzyDataRelations
@@ -9,7 +9,7 @@ namespace fuzzyDataRelations
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableNameData : NameData<LinguisticVariable>
+    public class LinguisticVariableText : Text<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string NameData
+        public LinguisticVariable Find(string Text
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == NameData
+                if (variable.Name == Text
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + NameData;
+                throw new Exception("LinguisticVariable not found: " + Text;
             else
                 return linguisticVariable;
         }
