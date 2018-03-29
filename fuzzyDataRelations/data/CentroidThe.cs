@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyRuleCollection fuzzyRuleCollection = new FuzzyRuleCollection();
+        private FuzzyLengthCollection fuzzyLengthCollection = new FuzzyLengthCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,8 +34,8 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] Rule = text.Split();
-                return this.linguisticVariableCollection.Find(Rule[0]).Fuzzify(Rule[2]);
+                string[] Length = text.Split();
+                return this.linguisticVariableCollection.Find(Length[0]).Fuzzify(Length[2]);
             }
 
             for (int i = 0; i < text.Length; i++)
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] Rule = text.Split();
+            string[] Length = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((Rule.Length / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((Length.Length / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(Rule[i]);
+                double tokenValue = Convert.ToDouble(Length[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < Rule.Length)
-                    connective = Rule[i + 1];
+                if ((i + 1) < Length.Length)
+                    connective = Length[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyRuleCollection FuzzyRuleCollection
+        public FuzzyLengthCollection FuzzyLengthCollection
         {
-            get { return fuzzyRuleCollection; }
-            set { fuzzyRuleCollection = value; }
+            get { return fuzzyLengthCollection; }
+            set { fuzzyLengthCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyRule fuzzyRule in this.fuzzyRuleCollection)
+            foreach (FuzzyLength fuzzyLength in this.fuzzyLengthCollection)
             {
-                fuzzyRule.Value = Parse(fuzzyRule.Conditions());
+                fuzzyLength.Value = Parse(fuzzyLength.Conditions());
 
-                string[] Rule = fuzzyRule.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Rule[Rule.Length - 1]);
+                string[] Length = fuzzyLength.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Length[Length.Length - 1]);
                 
-                if (fuzzyRule.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyRule.Value;
+                if (fuzzyLength.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyLength.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
