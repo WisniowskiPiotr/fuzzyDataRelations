@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The input value for the linguistic variable.
         /// </summary>
-        public double Double
+        public double System
         {
             get { return ; }
             set {  = value; }
@@ -85,12 +85,12 @@ namespace fuzzyDataRelations
         {
             MembershipFunction membershipFunction = this.membershipFunctionCollection.Find(membershipFunctionName);
 
-            if ((membershipFunction.X0 <= this.Double) && (this.Double < membershipFunction.X1))
-                return (this.Double - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
-            else if ((membershipFunction.X1 <= this.Double) && (this.Double <= membershipFunction.X2))
+            if ((membershipFunction.X0 <= this.System) && (this.System < membershipFunction.X1))
+                return (this.System - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
+            else if ((membershipFunction.X1 <= this.System) && (this.System <= membershipFunction.X2))
                 return 1;
-            else if ((membershipFunction.X2 < this.Double) && (this.Double <= membershipFunction.X3))
-                return (membershipFunction.X3 - this.Double) / (membershipFunction.X3 - membershipFunction.X2);
+            else if ((membershipFunction.X2 < this.System) && (this.System <= membershipFunction.X3))
+                return (membershipFunction.X3 - this.System) / (membershipFunction.X3 - membershipFunction.X2);
             else
                 return 0;
         }
