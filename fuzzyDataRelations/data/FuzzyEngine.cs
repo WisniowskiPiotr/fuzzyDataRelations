@@ -34,8 +34,8 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] ParamRelationsValue = text.Split();
-                return this.linguisticVariableCollection.Find(ParamRelationsValue[0]).Fuzzify(ParamRelationsValue[2]);
+                string[] Document = text.Split();
+                return this.linguisticVariableCollection.Find(Document[0]).Fuzzify(Document[2]);
             }
 
             for (int i = 0; i < text.Length; i++)
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] ParamRelationsValue = text.Split();
+            string[] Document = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((ParamRelationsValue.Length / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((Document.Length / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(ParamRelationsValue[i]);
+                double tokenValue = Convert.ToDouble(Document[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < ParamRelationsValue.Length)
-                    connective = ParamRelationsValue[i + 1];
+                if ((i + 1) < Document.Length)
+                    connective = Document[i + 1];
             }
 
             return value;
@@ -166,8 +166,8 @@ namespace fuzzyDataRelations
             {
                 fuzzyRule.Value = Parse(fuzzyRule.Conditions());
 
-                string[] ParamRelationsValue = fuzzyRule.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ParamRelationsValue[ParamRelationsValue.Length - 1]);
+                string[] Document = fuzzyRule.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Document[Document.Length - 1]);
                 
                 if (fuzzyRule.Value > membershipFunction.Value)
                     membershipFunction.Value = fuzzyRule.Value;
