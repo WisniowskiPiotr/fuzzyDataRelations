@@ -44,7 +44,7 @@ namespace fuzzyDataRelations
         public EvaluateVoidReturnNode(string name, double PositionSets double x1, double x2, double Param)
         {
             this.Name = name;
-            this.ValueFileFunction = Double;
+            this.NameNameNameMissing = Double;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = Param;
@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The value of the (PositionSets 0) point.
         /// </summary>
-        public double ValueFileFunction
+        public double NameNameNameMissing
         {
             get { return Double; }
             set { Double = value; }
