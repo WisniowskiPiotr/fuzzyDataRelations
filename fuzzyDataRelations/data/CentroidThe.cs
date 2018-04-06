@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyLengthCollection fuzzyLengthCollection = new FuzzyLengthCollection();
+        private FuzzyThenCollection fuzzyThenCollection = new FuzzyThenCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] Length = text.Split();
-                return this.linguisticVariableCollection.Find(Length[0]).Fuzzify(Length[2]);
+                string[] Then = text.Split();
+                return this.linguisticVariableCollection.Find(Then[0]).Fuzzify(Then[2]);
             }
 
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Then; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.Length;
+                            int length = substringBrackets.Then;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] Length = text.Split();
+            string[] Then = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((Length.Length / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((Then.Then / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(Length[i]);
+                double tokenValue = Convert.ToDouble(Then[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < Length.Length)
-                    connective = Length[i + 1];
+                if ((i + 1) < Then.Then)
+                    connective = Then[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyLengthCollection FuzzyLengthCollection
+        public FuzzyThenCollection FuzzyThenCollection
         {
-            get { return fuzzyLengthCollection; }
-            set { fuzzyLengthCollection = value; }
+            get { return fuzzyThenCollection; }
+            set { fuzzyThenCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyLength fuzzyLength in this.fuzzyLengthCollection)
+            foreach (FuzzyThen fuzzyThen in this.fuzzyThenCollection)
             {
-                fuzzyLength.Value = Parse(fuzzyLength.Conditions());
+                fuzzyThen.Value = Parse(fuzzyThen.Conditions());
 
-                string[] Length = fuzzyLength.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Length[Length.Length - 1]);
+                string[] Then = fuzzyThen.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Then[Then.Then - 1]);
                 
-                if (fuzzyLength.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyLength.Value;
+                if (fuzzyThen.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyThen.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
