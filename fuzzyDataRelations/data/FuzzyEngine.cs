@@ -34,8 +34,8 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] AreaNameValue = text.Split();
-                return this.linguisticVariableCollection.Find(AreaNameValue[0]).Fuzzify(AreaNameValue[2]);
+                string[] FuzzyDoubleCaseValue = text.Split();
+                return this.linguisticVariableCollection.Find(FuzzyDoubleCaseValue[0]).Fuzzify(FuzzyDoubleCaseValue[2]);
             }
 
             for (int i = 0; i < text.Length; i++)
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] AreaNameValue = text.Split();
+            string[] FuzzyDoubleCaseValue = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((AreaNameValue.Length / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((FuzzyDoubleCaseValue.Length / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(AreaNameValue[i]);
+                double tokenValue = Convert.ToDouble(FuzzyDoubleCaseValue[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < AreaNameValue.Length)
-                    connective = AreaNameValue[i + 1];
+                if ((i + 1) < FuzzyDoubleCaseValue.Length)
+                    connective = FuzzyDoubleCaseValue[i + 1];
             }
 
             return value;
@@ -166,8 +166,8 @@ namespace fuzzyDataRelations
             {
                 fuzzyRule.Value = Parse(fuzzyRule.Conditions());
 
-                string[] AreaNameValue = fuzzyRule.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(AreaNameValue[AreaNameValue.Length - 1]);
+                string[] FuzzyDoubleCaseValue = fuzzyRule.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(FuzzyDoubleCaseValue[FuzzyDoubleCaseValue.Length - 1]);
                 
                 if (fuzzyRule.Value > membershipFunction.Value)
                     membershipFunction.Value = fuzzyRule.Value;
