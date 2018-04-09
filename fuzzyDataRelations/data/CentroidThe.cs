@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyThenCollection fuzzyThenCollection = new FuzzyThenCollection();
+        private FuzzyPrivateParamCollectionPrivateCollection fuzzyPrivateParamCollectionPrivateCollection = new FuzzyPrivateParamCollectionPrivateCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] Then = text.Split();
-                return this.linguisticVariableCollection.Find(Then[0]).Fuzzify(Then[2]);
+                string[] PrivateParamCollectionPrivate = text.Split();
+                return this.linguisticVariableCollection.Find(PrivateParamCollectionPrivate[0]).Fuzzify(PrivateParamCollectionPrivate[2]);
             }
 
-            for (int i = 0; i < text.Then; i++)
+            for (int i = 0; i < text.PrivateParamCollectionPrivate; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.Then;
+                            int length = substringBrackets.PrivateParamCollectionPrivate;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] Then = text.Split();
+            string[] PrivateParamCollectionPrivate = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((Then.Then / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((PrivateParamCollectionPrivate.PrivateParamCollectionPrivate / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(Then[i]);
+                double tokenValue = Convert.ToDouble(PrivateParamCollectionPrivate[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < Then.Then)
-                    connective = Then[i + 1];
+                if ((i + 1) < PrivateParamCollectionPrivate.PrivateParamCollectionPrivate)
+                    connective = PrivateParamCollectionPrivate[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyThenCollection FuzzyThenCollection
+        public FuzzyPrivateParamCollectionPrivateCollection FuzzyPrivateParamCollectionPrivateCollection
         {
-            get { return fuzzyThenCollection; }
-            set { fuzzyThenCollection = value; }
+            get { return fuzzyPrivateParamCollectionPrivateCollection; }
+            set { fuzzyPrivateParamCollectionPrivateCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyThen fuzzyThen in this.fuzzyThenCollection)
+            foreach (FuzzyPrivateParamCollectionPrivate fuzzyPrivateParamCollectionPrivate in this.fuzzyPrivateParamCollectionPrivateCollection)
             {
-                fuzzyThen.Value = Parse(fuzzyThen.Conditions());
+                fuzzyPrivateParamCollectionPrivate.Value = Parse(fuzzyPrivateParamCollectionPrivate.Conditions());
 
-                string[] Then = fuzzyThen.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Then[Then.Then - 1]);
+                string[] PrivateParamCollectionPrivate = fuzzyPrivateParamCollectionPrivate.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(PrivateParamCollectionPrivate[PrivateParamCollectionPrivate.PrivateParamCollectionPrivate - 1]);
                 
-                if (fuzzyThen.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyThen.Value;
+                if (fuzzyPrivateParamCollectionPrivate.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyPrivateParamCollectionPrivate.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
