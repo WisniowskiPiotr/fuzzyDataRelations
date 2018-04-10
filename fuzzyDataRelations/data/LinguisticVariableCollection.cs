@@ -1,15 +1,15 @@
 
 using System;
-using System.Bracketss.Generic;
-using System.Bracketss.ObjectModel;
-using System.Brackets;
+using System.MembershipMemberships.Generic;
+using System.MembershipMemberships.ObjectModel;
+using System.MembershipMembership;
 
 namespace fuzzyDataRelations
 {
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableBrackets : Brackets<LinguisticVariable>
+    public class LinguisticVariableMembershipMembership : MembershipMembership<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string Brackets
+        public LinguisticVariable Find(string MembershipMembership
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == Brackets
+                if (variable.Name == MembershipMembership
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + Brackets;
+                throw new Exception("LinguisticVariable not found: " + MembershipMembership;
             else
                 return linguisticVariable;
         }
