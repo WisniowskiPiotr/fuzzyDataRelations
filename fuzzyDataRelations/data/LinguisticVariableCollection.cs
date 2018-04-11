@@ -1,15 +1,15 @@
 
 using System;
-using System.MembershipMemberships.Generic;
-using System.MembershipMemberships.ObjectModel;
-using System.MembershipMembership;
+using System.MaxSwitchNameBreaks.Generic;
+using System.MaxSwitchNameBreaks.ObjectModel;
+using System.MaxSwitchNameBreak;
 
 namespace fuzzyDataRelations
 {
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableMembershipMembership : MembershipMembership<LinguisticVariable>
+    public class LinguisticVariableMaxSwitchNameBreak : MaxSwitchNameBreak<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string MembershipMembership
+        public LinguisticVariable Find(string MaxSwitchNameBreak
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == MembershipMembership
+                if (variable.Name == MaxSwitchNameBreak
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + MembershipMembership;
+                throw new Exception("LinguisticVariable not found: " + MaxSwitchNameBreak;
             else
                 return linguisticVariable;
         }
