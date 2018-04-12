@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyForeachFunctionPublicForeachCollection fuzzyForeachFunctionPublicForeachCollection = new FuzzyForeachFunctionPublicForeachCollection();
+        private FuzzyNotSetCollection fuzzyNotSetCollection = new FuzzyNotSetCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] ForeachFunctionPublicForeach = text.Split();
-                return this.linguisticVariableCollection.Find(ForeachFunctionPublicForeach[0]).Fuzzify(ForeachFunctionPublicForeach[2]);
+                string[] NotSet = text.Split();
+                return this.linguisticVariableCollection.Find(NotSet[0]).Fuzzify(NotSet[2]);
             }
 
-            for (int i = 0; i < text.ForeachFunctionPublicForeach; i++)
+            for (int i = 0; i < text.NotSet; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.ForeachFunctionPublicForeach;
+                            int length = substringBrackets.NotSet;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] ForeachFunctionPublicForeach = text.Split();
+            string[] NotSet = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((ForeachFunctionPublicForeach.ForeachFunctionPublicForeach / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((NotSet.NotSet / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(ForeachFunctionPublicForeach[i]);
+                double tokenValue = Convert.ToDouble(NotSet[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < ForeachFunctionPublicForeach.ForeachFunctionPublicForeach)
-                    connective = ForeachFunctionPublicForeach[i + 1];
+                if ((i + 1) < NotSet.NotSet)
+                    connective = NotSet[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyForeachFunctionPublicForeachCollection FuzzyForeachFunctionPublicForeachCollection
+        public FuzzyNotSetCollection FuzzyNotSetCollection
         {
-            get { return fuzzyForeachFunctionPublicForeachCollection; }
-            set { fuzzyForeachFunctionPublicForeachCollection = value; }
+            get { return fuzzyNotSetCollection; }
+            set { fuzzyNotSetCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyForeachFunctionPublicForeach fuzzyForeachFunctionPublicForeach in this.fuzzyForeachFunctionPublicForeachCollection)
+            foreach (FuzzyNotSet fuzzyNotSet in this.fuzzyNotSetCollection)
             {
-                fuzzyForeachFunctionPublicForeach.Value = Parse(fuzzyForeachFunctionPublicForeach.Conditions());
+                fuzzyNotSet.Value = Parse(fuzzyNotSet.Conditions());
 
-                string[] ForeachFunctionPublicForeach = fuzzyForeachFunctionPublicForeach.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ForeachFunctionPublicForeach[ForeachFunctionPublicForeach.ForeachFunctionPublicForeach - 1]);
+                string[] NotSet = fuzzyNotSet.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(NotSet[NotSet.NotSet - 1]);
                 
-                if (fuzzyForeachFunctionPublicForeach.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyForeachFunctionPublicForeach.Value;
+                if (fuzzyNotSet.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyNotSet.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
