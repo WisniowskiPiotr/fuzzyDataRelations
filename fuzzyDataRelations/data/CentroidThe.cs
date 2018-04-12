@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyPrivateParamCollectionPrivateCollection fuzzyPrivateParamCollectionPrivateCollection = new FuzzyPrivateParamCollectionPrivateCollection();
+        private FuzzyForeachFunctionPublicForeachCollection fuzzyForeachFunctionPublicForeachCollection = new FuzzyForeachFunctionPublicForeachCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] PrivateParamCollectionPrivate = text.Split();
-                return this.linguisticVariableCollection.Find(PrivateParamCollectionPrivate[0]).Fuzzify(PrivateParamCollectionPrivate[2]);
+                string[] ForeachFunctionPublicForeach = text.Split();
+                return this.linguisticVariableCollection.Find(ForeachFunctionPublicForeach[0]).Fuzzify(ForeachFunctionPublicForeach[2]);
             }
 
-            for (int i = 0; i < text.PrivateParamCollectionPrivate; i++)
+            for (int i = 0; i < text.ForeachFunctionPublicForeach; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.PrivateParamCollectionPrivate;
+                            int length = substringBrackets.ForeachFunctionPublicForeach;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] PrivateParamCollectionPrivate = text.Split();
+            string[] ForeachFunctionPublicForeach = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((PrivateParamCollectionPrivate.PrivateParamCollectionPrivate / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((ForeachFunctionPublicForeach.ForeachFunctionPublicForeach / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(PrivateParamCollectionPrivate[i]);
+                double tokenValue = Convert.ToDouble(ForeachFunctionPublicForeach[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < PrivateParamCollectionPrivate.PrivateParamCollectionPrivate)
-                    connective = PrivateParamCollectionPrivate[i + 1];
+                if ((i + 1) < ForeachFunctionPublicForeach.ForeachFunctionPublicForeach)
+                    connective = ForeachFunctionPublicForeach[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyPrivateParamCollectionPrivateCollection FuzzyPrivateParamCollectionPrivateCollection
+        public FuzzyForeachFunctionPublicForeachCollection FuzzyForeachFunctionPublicForeachCollection
         {
-            get { return fuzzyPrivateParamCollectionPrivateCollection; }
-            set { fuzzyPrivateParamCollectionPrivateCollection = value; }
+            get { return fuzzyForeachFunctionPublicForeachCollection; }
+            set { fuzzyForeachFunctionPublicForeachCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyPrivateParamCollectionPrivate fuzzyPrivateParamCollectionPrivate in this.fuzzyPrivateParamCollectionPrivateCollection)
+            foreach (FuzzyForeachFunctionPublicForeach fuzzyForeachFunctionPublicForeach in this.fuzzyForeachFunctionPublicForeachCollection)
             {
-                fuzzyPrivateParamCollectionPrivate.Value = Parse(fuzzyPrivateParamCollectionPrivate.Conditions());
+                fuzzyForeachFunctionPublicForeach.Value = Parse(fuzzyForeachFunctionPublicForeach.Conditions());
 
-                string[] PrivateParamCollectionPrivate = fuzzyPrivateParamCollectionPrivate.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(PrivateParamCollectionPrivate[PrivateParamCollectionPrivate.PrivateParamCollectionPrivate - 1]);
+                string[] ForeachFunctionPublicForeach = fuzzyForeachFunctionPublicForeach.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ForeachFunctionPublicForeach[ForeachFunctionPublicForeach.ForeachFunctionPublicForeach - 1]);
                 
-                if (fuzzyPrivateParamCollectionPrivate.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyPrivateParamCollectionPrivate.Value;
+                if (fuzzyForeachFunctionPublicForeach.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyForeachFunctionPublicForeach.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
