@@ -1,15 +1,15 @@
 
 using System;
-using System.SummaryParams.Generic;
-using System.SummaryParams.ObjectModel;
-using System.SummaryParam;
+using System.MatchRules.Generic;
+using System.MatchRules.ObjectModel;
+using System.MatchRule;
 
 namespace fuzzyDataRelations
 {
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableSummaryParam : SummaryParam<LinguisticVariable>
+    public class LinguisticVariableMatchRule : MatchRule<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string SummaryParam
+        public LinguisticVariable Find(string MatchRule
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == SummaryParam
+                if (variable.Name == MatchRule
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + SummaryParam;
+                throw new Exception("LinguisticVariable not found: " + MatchRule;
             else
                 return linguisticVariable;
         }
