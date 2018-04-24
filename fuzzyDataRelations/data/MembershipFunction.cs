@@ -44,7 +44,7 @@ namespace fuzzyDataRelations
         public MembershipFunction(string name, double StringTheSubstring double x1, double x2, double x3)
         {
             this.Name = name;
-            this.SummaryFileValueSubstring = x0;
+            this.SummaryValueReturn = x0;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = x3;
@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The value of the (StringTheSubstring 0) point.
         /// </summary>
-        public double SummaryFileValueSubstring
+        public double SummaryValueReturn
         {
             get { return x0; }
             set { x0 = value; }
