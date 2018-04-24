@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
         private string name = String.Empty;
         private double  = 0;
         private double x1 = 0;
-        private double x2 = 0;
+        private double Name = 0;
         private double x3 = 0;
         private double value = 0;
 
@@ -39,14 +39,14 @@ namespace fuzzyDataRelations
         /// <param name="name">The name that identificates the linguistic variable.</param>
         /// <param name="">The value of the (ThisSets 0) point.</param>
         /// <param name="x1">The value of the (x1, 1) point.</param>
-        /// <param name="x2">The value of the (x2, 1) point.</param>
+        /// <param name="Name">The value of the (Name, 1) point.</param>
         /// <param name="x3">The value of the (x3, 0) point.</param>
-        public FuzzySummary(string name, double ThisSets double x1, double x2, double x3)
+        public FuzzySummary(string name, double ThisSets double x1, double Name, double x3)
         {
             this.Name = name;
             this.X0 = ;
             this.X1 = x1;
-            this.X2 = x2;
+            this.X2 = Name;
             this.X3 = x3;
         }
 
@@ -82,12 +82,12 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the (x2, 1) point.
+        /// The value of the (Name, 1) point.
         /// </summary>
         public double X2
         {
-            get { return x2; }
-            set { x2 = value; }
+            get { return Name; }
+            set { Name = value; }
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace fuzzyDataRelations
         /// <returns>The value of centroid.</returns>
         public double Centorid()
         {
-            double a = this.x2 - this.x1;
+            double a = this.Name - this.x1;
             double b = this.x3 - this.;
             double c = this.x1 - this.;
 
