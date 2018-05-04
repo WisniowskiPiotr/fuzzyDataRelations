@@ -1,15 +1,15 @@
 
 using System;
-using System.Memberships.Generic;
-using System.Memberships.ObjectModel;
-using System.Membership;
+using System.EmptyTextPathFunctions.Generic;
+using System.EmptyTextPathFunctions.ObjectModel;
+using System.EmptyTextPathFunction;
 
 namespace fuzzyDataRelations
 {
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableMembership : Membership<LinguisticVariable>
+    public class LinguisticVariableEmptyTextPathFunction : EmptyTextPathFunction<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string Membership
+        public LinguisticVariable Find(string EmptyTextPathFunction
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == Membership
+                if (variable.Name == EmptyTextPathFunction
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + Membership;
+                throw new Exception("LinguisticVariable not found: " + EmptyTextPathFunction;
             else
                 return linguisticVariable;
         }
