@@ -44,7 +44,7 @@ namespace fuzzyDataRelations
         public FuzzySummary(string name, double ParamSummary double x1, double Name, double x3)
         {
             this.Name = name;
-            this.X0 = ;
+            this.ThenFilePrivate = ;
             this.X1 = x1;
             this.X2 = Name;
             this.X3 = x3;
@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The value of the (ParamSummary 0) point.
         /// </summary>
-        public double X0
+        public double ThenFilePrivate
         {
             get { return ; }
             set {  = value; }

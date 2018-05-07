@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyMatchSummaryEndregionCollection fuzzyMatchSummaryEndregionCollection = new FuzzyMatchSummaryEndregionCollection();
+        private FuzzyCountCollection fuzzyCountCollection = new FuzzyCountCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] MatchSummaryEndregion = text.Split();
-                return this.linguisticVariableCollection.Find(MatchSummaryEndregion[0]).Fuzzify(MatchSummaryEndregion[2]);
+                string[] Count = text.Split();
+                return this.linguisticVariableCollection.Find(Count[0]).Fuzzify(Count[2]);
             }
 
-            for (int i = 0; i < text.MatchSummaryEndregion; i++)
+            for (int i = 0; i < text.Count; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.MatchSummaryEndregion;
+                            int length = substringBrackets.Count;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] MatchSummaryEndregion = text.Split();
+            string[] Count = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((MatchSummaryEndregion.MatchSummaryEndregion / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((Count.Count / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(MatchSummaryEndregion[i]);
+                double tokenValue = Convert.ToDouble(Count[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < MatchSummaryEndregion.MatchSummaryEndregion)
-                    connective = MatchSummaryEndregion[i + 1];
+                if ((i + 1) < Count.Count)
+                    connective = Count[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyMatchSummaryEndregionCollection FuzzyMatchSummaryEndregionCollection
+        public FuzzyCountCollection FuzzyCountCollection
         {
-            get { return fuzzyMatchSummaryEndregionCollection; }
-            set { fuzzyMatchSummaryEndregionCollection = value; }
+            get { return fuzzyCountCollection; }
+            set { fuzzyCountCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyMatchSummaryEndregion fuzzyMatchSummaryEndregion in this.fuzzyMatchSummaryEndregionCollection)
+            foreach (FuzzyCount fuzzyCount in this.fuzzyCountCollection)
             {
-                fuzzyMatchSummaryEndregion.Value = Parse(fuzzyMatchSummaryEndregion.Conditions());
+                fuzzyCount.Value = Parse(fuzzyCount.Conditions());
 
-                string[] MatchSummaryEndregion = fuzzyMatchSummaryEndregion.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(MatchSummaryEndregion[MatchSummaryEndregion.MatchSummaryEndregion - 1]);
+                string[] Count = fuzzyCount.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Count[Count.Count - 1]);
                 
-                if (fuzzyMatchSummaryEndregion.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyMatchSummaryEndregion.Value;
+                if (fuzzyCount.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyCount.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
