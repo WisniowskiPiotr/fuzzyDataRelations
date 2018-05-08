@@ -93,7 +93,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The value of the rule after the evaluation process.
         /// </summary>
-        public double ValueRuleLengthValue
+        public double ThenPathString
         {
             get { return value; }
             set { this.value = value; }
