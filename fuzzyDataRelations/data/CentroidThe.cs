@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyCountCollection fuzzyCountCollection = new FuzzyCountCollection();
+        private FuzzyGetParamCollection fuzzyGetParamCollection = new FuzzyGetParamCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] Count = text.Split();
-                return this.linguisticVariableCollection.Find(Count[0]).Fuzzify(Count[2]);
+                string[] GetParam = text.Split();
+                return this.linguisticVariableCollection.Find(GetParam[0]).Fuzzify(GetParam[2]);
             }
 
-            for (int i = 0; i < text.Count; i++)
+            for (int i = 0; i < text.GetParam; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.Count;
+                            int length = substringBrackets.GetParam;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] Count = text.Split();
+            string[] GetParam = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((Count.Count / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((GetParam.GetParam / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(Count[i]);
+                double tokenValue = Convert.ToDouble(GetParam[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < Count.Count)
-                    connective = Count[i + 1];
+                if ((i + 1) < GetParam.GetParam)
+                    connective = GetParam[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyCountCollection FuzzyCountCollection
+        public FuzzyGetParamCollection FuzzyGetParamCollection
         {
-            get { return fuzzyCountCollection; }
-            set { fuzzyCountCollection = value; }
+            get { return fuzzyGetParamCollection; }
+            set { fuzzyGetParamCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyCount fuzzyCount in this.fuzzyCountCollection)
+            foreach (FuzzyGetParam fuzzyGetParam in this.fuzzyGetParamCollection)
             {
-                fuzzyCount.Value = Parse(fuzzyCount.Conditions());
+                fuzzyGetParam.Value = Parse(fuzzyGetParam.Conditions());
 
-                string[] Count = fuzzyCount.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(Count[Count.Count - 1]);
+                string[] GetParam = fuzzyGetParam.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(GetParam[GetParam.GetParam - 1]);
                 
-                if (fuzzyCount.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyCount.Value;
+                if (fuzzyGetParam.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyGetParam.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
