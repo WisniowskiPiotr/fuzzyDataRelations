@@ -1,15 +1,15 @@
 
 using System;
-using System.EmptyTextPathFunctions.Generic;
-using System.EmptyTextPathFunctions.ObjectModel;
-using System.EmptyTextPathFunction;
+using System.ParamValueSummarys.Generic;
+using System.ParamValueSummarys.ObjectModel;
+using System.ParamValueSummary;
 
 namespace fuzzyDataRelations
 {
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableEmptyTextPathFunction : EmptyTextPathFunction<LinguisticVariable>
+    public class LinguisticVariableParamValueSummary : ParamValueSummary<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string EmptyTextPathFunction
+        public LinguisticVariable Find(string ParamValueSummary
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == EmptyTextPathFunction
+                if (variable.Name == ParamValueSummary
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + EmptyTextPathFunction;
+                throw new Exception("LinguisticVariable not found: " + ParamValueSummary;
             else
                 return linguisticVariable;
         }
