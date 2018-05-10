@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyGetParamCollection fuzzyGetParamCollection = new FuzzyGetParamCollection();
+        private FuzzyLinguisticThisRepresentsCollection fuzzyLinguisticThisRepresentsCollection = new FuzzyLinguisticThisRepresentsCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] GetParam = text.Split();
-                return this.linguisticVariableCollection.Find(GetParam[0]).Fuzzify(GetParam[2]);
+                string[] LinguisticThisRepresents = text.Split();
+                return this.linguisticVariableCollection.Find(LinguisticThisRepresents[0]).Fuzzify(LinguisticThisRepresents[2]);
             }
 
-            for (int i = 0; i < text.GetParam; i++)
+            for (int i = 0; i < text.LinguisticThisRepresents; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.GetParam;
+                            int length = substringBrackets.LinguisticThisRepresents;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] GetParam = text.Split();
+            string[] LinguisticThisRepresents = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((GetParam.GetParam / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((LinguisticThisRepresents.LinguisticThisRepresents / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(GetParam[i]);
+                double tokenValue = Convert.ToDouble(LinguisticThisRepresents[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < GetParam.GetParam)
-                    connective = GetParam[i + 1];
+                if ((i + 1) < LinguisticThisRepresents.LinguisticThisRepresents)
+                    connective = LinguisticThisRepresents[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyGetParamCollection FuzzyGetParamCollection
+        public FuzzyLinguisticThisRepresentsCollection FuzzyLinguisticThisRepresentsCollection
         {
-            get { return fuzzyGetParamCollection; }
-            set { fuzzyGetParamCollection = value; }
+            get { return fuzzyLinguisticThisRepresentsCollection; }
+            set { fuzzyLinguisticThisRepresentsCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyGetParam fuzzyGetParam in this.fuzzyGetParamCollection)
+            foreach (FuzzyLinguisticThisRepresents fuzzyLinguisticThisRepresents in this.fuzzyLinguisticThisRepresentsCollection)
             {
-                fuzzyGetParam.Value = Parse(fuzzyGetParam.Conditions());
+                fuzzyLinguisticThisRepresents.Value = Parse(fuzzyLinguisticThisRepresents.Conditions());
 
-                string[] GetParam = fuzzyGetParam.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(GetParam[GetParam.GetParam - 1]);
+                string[] LinguisticThisRepresents = fuzzyLinguisticThisRepresents.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(LinguisticThisRepresents[LinguisticThisRepresents.LinguisticThisRepresents - 1]);
                 
-                if (fuzzyGetParam.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyGetParam.Value;
+                if (fuzzyLinguisticThisRepresents.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyLinguisticThisRepresents.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
