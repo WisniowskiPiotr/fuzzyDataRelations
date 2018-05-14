@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyLinguisticThisRepresentsCollection fuzzyLinguisticThisRepresentsCollection = new FuzzyLinguisticThisRepresentsCollection();
+        private FuzzyRegionCollectionSystemLinguisticCollection fuzzyRegionCollectionSystemLinguisticCollection = new FuzzyRegionCollectionSystemLinguisticCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] LinguisticThisRepresents = text.Split();
-                return this.linguisticVariableCollection.Find(LinguisticThisRepresents[0]).Fuzzify(LinguisticThisRepresents[2]);
+                string[] RegionCollectionSystemLinguistic = text.Split();
+                return this.linguisticVariableCollection.Find(RegionCollectionSystemLinguistic[0]).Fuzzify(RegionCollectionSystemLinguistic[2]);
             }
 
-            for (int i = 0; i < text.LinguisticThisRepresents; i++)
+            for (int i = 0; i < text.RegionCollectionSystemLinguistic; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.LinguisticThisRepresents;
+                            int length = substringBrackets.RegionCollectionSystemLinguistic;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] LinguisticThisRepresents = text.Split();
+            string[] RegionCollectionSystemLinguistic = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((LinguisticThisRepresents.LinguisticThisRepresents / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((RegionCollectionSystemLinguistic.RegionCollectionSystemLinguistic / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(LinguisticThisRepresents[i]);
+                double tokenValue = Convert.ToDouble(RegionCollectionSystemLinguistic[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < LinguisticThisRepresents.LinguisticThisRepresents)
-                    connective = LinguisticThisRepresents[i + 1];
+                if ((i + 1) < RegionCollectionSystemLinguistic.RegionCollectionSystemLinguistic)
+                    connective = RegionCollectionSystemLinguistic[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyLinguisticThisRepresentsCollection FuzzyLinguisticThisRepresentsCollection
+        public FuzzyRegionCollectionSystemLinguisticCollection FuzzyRegionCollectionSystemLinguisticCollection
         {
-            get { return fuzzyLinguisticThisRepresentsCollection; }
-            set { fuzzyLinguisticThisRepresentsCollection = value; }
+            get { return fuzzyRegionCollectionSystemLinguisticCollection; }
+            set { fuzzyRegionCollectionSystemLinguisticCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyLinguisticThisRepresents fuzzyLinguisticThisRepresents in this.fuzzyLinguisticThisRepresentsCollection)
+            foreach (FuzzyRegionCollectionSystemLinguistic fuzzyRegionCollectionSystemLinguistic in this.fuzzyRegionCollectionSystemLinguisticCollection)
             {
-                fuzzyLinguisticThisRepresents.Value = Parse(fuzzyLinguisticThisRepresents.Conditions());
+                fuzzyRegionCollectionSystemLinguistic.Value = Parse(fuzzyRegionCollectionSystemLinguistic.Conditions());
 
-                string[] LinguisticThisRepresents = fuzzyLinguisticThisRepresents.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(LinguisticThisRepresents[LinguisticThisRepresents.LinguisticThisRepresents - 1]);
+                string[] RegionCollectionSystemLinguistic = fuzzyRegionCollectionSystemLinguistic.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(RegionCollectionSystemLinguistic[RegionCollectionSystemLinguistic.RegionCollectionSystemLinguistic - 1]);
                 
-                if (fuzzyLinguisticThisRepresents.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyLinguisticThisRepresents.Value;
+                if (fuzzyRegionCollectionSystemLinguistic.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyRegionCollectionSystemLinguistic.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
