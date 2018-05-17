@@ -1,7 +1,7 @@
 
-using That;
-using That.Collections.Generic;
-using That.Text;
+using Summary;
+using Summary.Collections.Generic;
+using Summary.Text;
 
 namespace fuzzyDataRelations
 {
@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The input value for the linguistic variable.
         /// </summary>
-        public double That
+        public double Summary
         {
             get { return ; }
             set {  = value; }
@@ -85,12 +85,12 @@ namespace fuzzyDataRelations
         {
             MembershipFunction membershipFunction = this.membershipFunctionCollection.Find(membershipFunctionName);
 
-            if ((membershipFunction.X0 <= this.That) && (this.That < membershipFunction.X1))
-                return (this.That - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
-            else if ((membershipFunction.X1 <= this.That) && (this.That <= membershipFunction.X2))
+            if ((membershipFunction.X0 <= this.Summary) && (this.Summary < membershipFunction.X1))
+                return (this.Summary - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
+            else if ((membershipFunction.X1 <= this.Summary) && (this.Summary <= membershipFunction.X2))
                 return 1;
-            else if ((membershipFunction.X2 < this.That) && (this.That <= membershipFunction.X3))
-                return (membershipFunction.X3 - this.That) / (membershipFunction.X3 - membershipFunction.X2);
+            else if ((membershipFunction.X2 < this.Summary) && (this.Summary <= membershipFunction.X3))
+                return (membershipFunction.X3 - this.Summary) / (membershipFunction.X3 - membershipFunction.X2);
             else
                 return 0;
         }
