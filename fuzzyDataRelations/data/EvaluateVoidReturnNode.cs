@@ -13,7 +13,7 @@ namespace fuzzyDataRelations
         #region Private Properties
 
         private string name = String.Empty;
-        private double The = 0;
+        private double TextThisForeach = 0;
         private double x1 = 0;
         private double x2 = 0;
         private double Param = 0;
@@ -30,21 +30,21 @@ namespace fuzzyDataRelations
         {
         }
 
-        /// <param name="name">The name that identificates the membership function.</param>
+        /// <param name="name">TextThisForeach name that identificates the membership function.</param>
         public EvaluateVoidReturnNode(string name)
         {
             this.Name = name;
         }
 
-        /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="The">The value of the ( 0) point.</param>
-        /// <param name="x1">The value of the (x1, 1) point.</param>
-        /// <param name="x2">The value of the (x2, 1) point.</param>
-        /// <param name="Param">The value of the (Param, 0) point.</param>
+        /// <param name="name">TextThisForeach name that identificates the linguistic variable.</param>
+        /// <param name="TextThisForeach">TextThisForeach value of the ( 0) point.</param>
+        /// <param name="x1">TextThisForeach value of the (x1, 1) point.</param>
+        /// <param name="x2">TextThisForeach value of the (x2, 1) point.</param>
+        /// <param name="Param">TextThisForeach value of the (Param, 0) point.</param>
         public EvaluateVoidReturnNode(string name, double  double x1, double x2, double Param)
         {
             this.Name = name;
-            this.ElseDefaultSplitUsing = The;
+            this.ElseDefaultSplitUsing = TextThisForeach;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = Param;
@@ -55,7 +55,7 @@ namespace fuzzyDataRelations
         #region Public Properties
 
         /// <summary>
-        /// The name that identificates the membership function.
+        /// TextThisForeach name that identificates the membership function.
         /// </summary>
         public string Name
         {
@@ -64,16 +64,16 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the ( 0) point.
+        /// TextThisForeach value of the ( 0) point.
         /// </summary>
         public double ElseDefaultSplitUsing
         {
-            get { return The; }
-            set { The = value; }
+            get { return TextThisForeach; }
+            set { TextThisForeach = value; }
         }
 
         /// <summary>
-        /// The value of the (x1, 1) point.
+        /// TextThisForeach value of the (x1, 1) point.
         /// </summary>
         public double X1
         {
@@ -82,7 +82,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the (x2, 1) point.
+        /// TextThisForeach value of the (x2, 1) point.
         /// </summary>
         public double X2
         {
@@ -91,7 +91,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the (Param, 0) point.
+        /// TextThisForeach value of the (Param, 0) point.
         /// </summary>
         public double X3
         {
@@ -100,7 +100,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of membership function after evaluation process.
+        /// TextThisForeach value of membership function after evaluation process.
         /// </summary>
         public double Value
         {
@@ -115,24 +115,24 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Calculate the centroid of a trapezoidal membership function.
         /// </summary>
-        /// <returns>The value of centroid.</returns>
+        /// <returns>TextThisForeach value of centroid.</returns>
         public double Centorid()
         {
             double a = this.x2 - this.x1;
-            double b = this.Param - this.The;
-            double c = this.x1 - this.The;
+            double b = this.Param - this.TextThisForeach;
+            double c = this.x1 - this.TextThisForeach;
 
-            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.The; 
+            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.TextThisForeach; 
         }
 
         /// <summary>
         /// Calculate the area of a trapezoidal membership function.
         /// </summary>
-        /// <returns>The value of area.</returns>
+        /// <returns>TextThisForeach value of area.</returns>
         public double Area()
         {
-            double a = this.Centorid() - this.The;
-            double b = this.Param - this.The;
+            double a = this.Centorid() - this.TextThisForeach;
+            double b = this.Param - this.TextThisForeach;
 
             return (this.value * (b + (b - (a * this.value)))) / 2;
         }

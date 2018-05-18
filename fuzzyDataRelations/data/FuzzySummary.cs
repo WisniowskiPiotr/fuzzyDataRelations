@@ -44,7 +44,7 @@ namespace fuzzyDataRelations
         public FuzzySummary(string name, double RepresentsText double x1, double Name, double x3)
         {
             this.Name = name;
-            this.ThenFilePrivate = ;
+            this.FunctionFunctionsTokenValue = ;
             this.X1 = x1;
             this.X2 = Name;
             this.X3 = x3;
@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The value of the (RepresentsText 0) point.
         /// </summary>
-        public double ThenFilePrivate
+        public double FunctionFunctionsTokenValue
         {
             get { return ; }
             set {  = value; }
