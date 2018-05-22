@@ -44,7 +44,7 @@ namespace fuzzyDataRelations
         public EvaluateVoidReturnNode(string name, double  double x1, double x2, double Param)
         {
             this.Name = name;
-            this.ElseDefaultSplitUsing = TextThisForeach;
+            this.CollectionFunctionPathValue = TextThisForeach;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = Param;
@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// TextThisForeach value of the ( 0) point.
         /// </summary>
-        public double ElseDefaultSplitUsing
+        public double CollectionFunctionPathValue
         {
             get { return TextThisForeach; }
             set { TextThisForeach = value; }
