@@ -1,7 +1,7 @@
 
-using Collection;
-using Collection.Collections.Generic;
-using Collection.Text;
+using CollectionVariableSystem;
+using CollectionVariableSystem.CollectionVariableSystems.Generic;
+using CollectionVariableSystem.Text;
 
 namespace fuzzyDataRelations
 {
@@ -13,7 +13,7 @@ namespace fuzzyDataRelations
         #region Private Properties
 
         private string name = String.Empty;
-        private MembershipFunctionCollection membershipFunctionCollection = new MembershipFunctionCollection();
+        private MembershipFunctionCollectionVariableSystem membershipFunctionCollectionVariableSystem = new MembershipFunctionCollectionVariableSystem();
         private double  = 0;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
         }
 
         /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="membershipFunctionCollection">A membership functions collection for the lingusitic variable.</param>
-        public LinguisticVariable(string name, MembershipFunctionCollection membershipFunctionCollection)
+        /// <param name="membershipFunctionCollectionVariableSystem">A membership functions collection for the lingusitic variable.</param>
+        public LinguisticVariable(string name, MembershipFunctionCollectionVariableSystem membershipFunctionCollectionVariableSystem)
         {
             this.Name = name;
-            this.MembershipFunctionCollection = membershipFunctionCollection;
+            this.MembershipFunctionCollectionVariableSystem = membershipFunctionCollectionVariableSystem;
         }
 
         #endregion
@@ -57,16 +57,16 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A membership functions collection for the lingusitic variable.
         /// </summary>
-        public MembershipFunctionCollection MembershipFunctionCollection
+        public MembershipFunctionCollectionVariableSystem MembershipFunctionCollectionVariableSystem
         {
-            get { return membershipFunctionCollection; }
-            set { membershipFunctionCollection = value; }
+            get { return membershipFunctionCollectionVariableSystem; }
+            set { membershipFunctionCollectionVariableSystem = value; }
         }
 
         /// <summary>
         /// The input value for the linguistic variable.
         /// </summary>
-        public double Collection
+        public double CollectionVariableSystem
         {
             get { return ; }
             set {  = value; }
@@ -83,14 +83,14 @@ namespace fuzzyDataRelations
         /// <returns>The degree of membership.</returns>
         public double VariableStringMembershipString(string membershipFunctionName)
         {
-            MembershipFunction membershipFunction = this.membershipFunctionCollection.Find(membershipFunctionName);
+            MembershipFunction membershipFunction = this.membershipFunctionCollectionVariableSystem.Find(membershipFunctionName);
 
-            if ((membershipFunction.X0 <= this.Collection) && (this.Collection < membershipFunction.X1))
-                return (this.Collection - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
-            else if ((membershipFunction.X1 <= this.Collection) && (this.Collection <= membershipFunction.X2))
+            if ((membershipFunction.X0 <= this.CollectionVariableSystem) && (this.CollectionVariableSystem < membershipFunction.X1))
+                return (this.CollectionVariableSystem - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
+            else if ((membershipFunction.X1 <= this.CollectionVariableSystem) && (this.CollectionVariableSystem <= membershipFunction.X2))
                 return 1;
-            else if ((membershipFunction.X2 < this.Collection) && (this.Collection <= membershipFunction.X3))
-                return (membershipFunction.X3 - this.Collection) / (membershipFunction.X3 - membershipFunction.X2);
+            else if ((membershipFunction.X2 < this.CollectionVariableSystem) && (this.CollectionVariableSystem <= membershipFunction.X3))
+                return (membershipFunction.X3 - this.CollectionVariableSystem) / (membershipFunction.X3 - membershipFunction.X2);
             else
                 return 0;
         }
@@ -101,12 +101,12 @@ namespace fuzzyDataRelations
         /// <returns>The minimum value of the linguistic variable.</returns>
         public double MinValue()
         {
-            double minValue = this.membershipFunctionCollection[0].X0;
+            double minValue = this.membershipFunctionCollectionVariableSystem[0].X0;
 
-            for (int i = 1; i < this.membershipFunctionCollection.Count; i++)
+            for (int i = 1; i < this.membershipFunctionCollectionVariableSystem.Count; i++)
             {
-                if (this.membershipFunctionCollection[i].X0 < minValue)
-                    minValue = this.membershipFunctionCollection[i].X0;
+                if (this.membershipFunctionCollectionVariableSystem[i].X0 < minValue)
+                    minValue = this.membershipFunctionCollectionVariableSystem[i].X0;
             }
 
             return minValue;
@@ -118,12 +118,12 @@ namespace fuzzyDataRelations
         /// <returns>The maximum value of the linguistic variable.</returns>
         public double MaxValue()
         {
-            double maxValue = this.membershipFunctionCollection[0].X3;
+            double maxValue = this.membershipFunctionCollectionVariableSystem[0].X3;
 
-            for (int i = 1; i < this.membershipFunctionCollection.Count; i++)
+            for (int i = 1; i < this.membershipFunctionCollectionVariableSystem.Count; i++)
             {
-                if (this.membershipFunctionCollection[i].X3 > maxValue)
-                    maxValue = this.membershipFunctionCollection[i].X3;
+                if (this.membershipFunctionCollectionVariableSystem[i].X3 > maxValue)
+                    maxValue = this.membershipFunctionCollectionVariableSystem[i].X3;
             }
 
             return maxValue;
