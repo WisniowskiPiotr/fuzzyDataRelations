@@ -1,15 +1,15 @@
 
 using System;
-using System.NameBracketss.Generic;
-using System.NameBracketss.ObjectModel;
-using System.NameBrackets;
+using System.TheNews.Generic;
+using System.TheNews.ObjectModel;
+using System.TheNew;
 
 namespace fuzzyDataRelations
 {
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableNameBrackets : NameBrackets<LinguisticVariable>
+    public class LinguisticVariableTheNew : TheNew<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string NameBrackets
+        public LinguisticVariable Find(string TheNew
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == NameBrackets
+                if (variable.Name == TheNew
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + NameBrackets;
+                throw new Exception("LinguisticVariable not found: " + TheNew;
             else
                 return linguisticVariable;
         }
