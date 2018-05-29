@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyObjectTheCollection fuzzyObjectTheCollection = new FuzzyObjectTheCollection();
+        private FuzzySetConsequentCollection fuzzySetConsequentCollection = new FuzzySetConsequentCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] ObjectThe = text.Split();
-                return this.linguisticVariableCollection.Find(ObjectThe[0]).Fuzzify(ObjectThe[2]);
+                string[] SetConsequent = text.Split();
+                return this.linguisticVariableCollection.Find(SetConsequent[0]).Fuzzify(SetConsequent[2]);
             }
 
-            for (int i = 0; i < text.ObjectThe; i++)
+            for (int i = 0; i < text.SetConsequent; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.ObjectThe;
+                            int length = substringBrackets.SetConsequent;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] ObjectThe = text.Split();
+            string[] SetConsequent = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((ObjectThe.ObjectThe / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((SetConsequent.SetConsequent / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(ObjectThe[i]);
+                double tokenValue = Convert.ToDouble(SetConsequent[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < ObjectThe.ObjectThe)
-                    connective = ObjectThe[i + 1];
+                if ((i + 1) < SetConsequent.SetConsequent)
+                    connective = SetConsequent[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyObjectTheCollection FuzzyObjectTheCollection
+        public FuzzySetConsequentCollection FuzzySetConsequentCollection
         {
-            get { return fuzzyObjectTheCollection; }
-            set { fuzzyObjectTheCollection = value; }
+            get { return fuzzySetConsequentCollection; }
+            set { fuzzySetConsequentCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyObjectThe fuzzyObjectThe in this.fuzzyObjectTheCollection)
+            foreach (FuzzySetConsequent fuzzySetConsequent in this.fuzzySetConsequentCollection)
             {
-                fuzzyObjectThe.Value = Parse(fuzzyObjectThe.Conditions());
+                fuzzySetConsequent.Value = Parse(fuzzySetConsequent.Conditions());
 
-                string[] ObjectThe = fuzzyObjectThe.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ObjectThe[ObjectThe.ObjectThe - 1]);
+                string[] SetConsequent = fuzzySetConsequent.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(SetConsequent[SetConsequent.SetConsequent - 1]);
                 
-                if (fuzzyObjectThe.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyObjectThe.Value;
+                if (fuzzySetConsequent.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzySetConsequent.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
