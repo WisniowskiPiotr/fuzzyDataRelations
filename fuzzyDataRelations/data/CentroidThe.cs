@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyVariableForeachReturnsCollection fuzzyVariableForeachReturnsCollection = new FuzzyVariableForeachReturnsCollection();
+        private FuzzyObjectTheCollection fuzzyObjectTheCollection = new FuzzyObjectTheCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] VariableForeachReturns = text.Split();
-                return this.linguisticVariableCollection.Find(VariableForeachReturns[0]).Fuzzify(VariableForeachReturns[2]);
+                string[] ObjectThe = text.Split();
+                return this.linguisticVariableCollection.Find(ObjectThe[0]).Fuzzify(ObjectThe[2]);
             }
 
-            for (int i = 0; i < text.VariableForeachReturns; i++)
+            for (int i = 0; i < text.ObjectThe; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.VariableForeachReturns;
+                            int length = substringBrackets.ObjectThe;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] VariableForeachReturns = text.Split();
+            string[] ObjectThe = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((VariableForeachReturns.VariableForeachReturns / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((ObjectThe.ObjectThe / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(VariableForeachReturns[i]);
+                double tokenValue = Convert.ToDouble(ObjectThe[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < VariableForeachReturns.VariableForeachReturns)
-                    connective = VariableForeachReturns[i + 1];
+                if ((i + 1) < ObjectThe.ObjectThe)
+                    connective = ObjectThe[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyVariableForeachReturnsCollection FuzzyVariableForeachReturnsCollection
+        public FuzzyObjectTheCollection FuzzyObjectTheCollection
         {
-            get { return fuzzyVariableForeachReturnsCollection; }
-            set { fuzzyVariableForeachReturnsCollection = value; }
+            get { return fuzzyObjectTheCollection; }
+            set { fuzzyObjectTheCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyVariableForeachReturns fuzzyVariableForeachReturns in this.fuzzyVariableForeachReturnsCollection)
+            foreach (FuzzyObjectThe fuzzyObjectThe in this.fuzzyObjectTheCollection)
             {
-                fuzzyVariableForeachReturns.Value = Parse(fuzzyVariableForeachReturns.Conditions());
+                fuzzyObjectThe.Value = Parse(fuzzyObjectThe.Conditions());
 
-                string[] VariableForeachReturns = fuzzyVariableForeachReturns.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(VariableForeachReturns[VariableForeachReturns.VariableForeachReturns - 1]);
+                string[] ObjectThe = fuzzyObjectThe.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ObjectThe[ObjectThe.ObjectThe - 1]);
                 
-                if (fuzzyVariableForeachReturns.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyVariableForeachReturns.Value;
+                if (fuzzyObjectThe.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyObjectThe.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
