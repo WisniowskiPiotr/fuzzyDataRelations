@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzySetConsequentCollection fuzzySetConsequentCollection = new FuzzySetConsequentCollection();
+        private FuzzyParamNamespacePrivateCollection fuzzyParamNamespacePrivateCollection = new FuzzyParamNamespacePrivateCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] SetConsequent = text.Split();
-                return this.linguisticVariableCollection.Find(SetConsequent[0]).Fuzzify(SetConsequent[2]);
+                string[] ParamNamespacePrivate = text.Split();
+                return this.linguisticVariableCollection.Find(ParamNamespacePrivate[0]).Fuzzify(ParamNamespacePrivate[2]);
             }
 
-            for (int i = 0; i < text.SetConsequent; i++)
+            for (int i = 0; i < text.ParamNamespacePrivate; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.SetConsequent;
+                            int length = substringBrackets.ParamNamespacePrivate;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] SetConsequent = text.Split();
+            string[] ParamNamespacePrivate = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((SetConsequent.SetConsequent / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((ParamNamespacePrivate.ParamNamespacePrivate / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(SetConsequent[i]);
+                double tokenValue = Convert.ToDouble(ParamNamespacePrivate[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < SetConsequent.SetConsequent)
-                    connective = SetConsequent[i + 1];
+                if ((i + 1) < ParamNamespacePrivate.ParamNamespacePrivate)
+                    connective = ParamNamespacePrivate[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzySetConsequentCollection FuzzySetConsequentCollection
+        public FuzzyParamNamespacePrivateCollection FuzzyParamNamespacePrivateCollection
         {
-            get { return fuzzySetConsequentCollection; }
-            set { fuzzySetConsequentCollection = value; }
+            get { return fuzzyParamNamespacePrivateCollection; }
+            set { fuzzyParamNamespacePrivateCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzySetConsequent fuzzySetConsequent in this.fuzzySetConsequentCollection)
+            foreach (FuzzyParamNamespacePrivate fuzzyParamNamespacePrivate in this.fuzzyParamNamespacePrivateCollection)
             {
-                fuzzySetConsequent.Value = Parse(fuzzySetConsequent.Conditions());
+                fuzzyParamNamespacePrivate.Value = Parse(fuzzyParamNamespacePrivate.Conditions());
 
-                string[] SetConsequent = fuzzySetConsequent.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(SetConsequent[SetConsequent.SetConsequent - 1]);
+                string[] ParamNamespacePrivate = fuzzyParamNamespacePrivate.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ParamNamespacePrivate[ParamNamespacePrivate.ParamNamespacePrivate - 1]);
                 
-                if (fuzzySetConsequent.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzySetConsequent.Value;
+                if (fuzzyParamNamespacePrivate.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzyParamNamespacePrivate.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
