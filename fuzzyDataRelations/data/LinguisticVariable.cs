@@ -1,7 +1,7 @@
 
-using ThisFuzzy;
-using ThisFuzzy.ThisFuzzys.Generic;
-using ThisFuzzy.Text;
+using Centorid;
+using Centorid.Centorids.Generic;
+using Centorid.Text;
 
 namespace fuzzyDataRelations
 {
@@ -13,7 +13,7 @@ namespace fuzzyDataRelations
         #region Private Properties
 
         private string name = String.Empty;
-        private MembershipFunctionThisFuzzy membershipFunctionThisFuzzy = new MembershipFunctionThisFuzzy();
+        private MembershipFunctionCentorid membershipFunctionCentorid = new MembershipFunctionCentorid();
         private double  = 0;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
         }
 
         /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="membershipFunctionThisFuzzy">A membership functions collection for the lingusitic variable.</param>
-        public LinguisticVariable(string name, MembershipFunctionThisFuzzy membershipFunctionThisFuzzy)
+        /// <param name="membershipFunctionCentorid">A membership functions collection for the lingusitic variable.</param>
+        public LinguisticVariable(string name, MembershipFunctionCentorid membershipFunctionCentorid)
         {
             this.Name = name;
-            this.MembershipFunctionThisFuzzy = membershipFunctionThisFuzzy;
+            this.MembershipFunctionCentorid = membershipFunctionCentorid;
         }
 
         #endregion
@@ -57,16 +57,16 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A membership functions collection for the lingusitic variable.
         /// </summary>
-        public MembershipFunctionThisFuzzy MembershipFunctionThisFuzzy
+        public MembershipFunctionCentorid MembershipFunctionCentorid
         {
-            get { return membershipFunctionThisFuzzy; }
-            set { membershipFunctionThisFuzzy = value; }
+            get { return membershipFunctionCentorid; }
+            set { membershipFunctionCentorid = value; }
         }
 
         /// <summary>
         /// The input value for the linguistic variable.
         /// </summary>
-        public double ThisFuzzy
+        public double Centorid
         {
             get { return ; }
             set {  = value; }
@@ -83,14 +83,14 @@ namespace fuzzyDataRelations
         /// <returns>The degree of membership.</returns>
         public double VariableStringMembershipString(string membershipFunctionName)
         {
-            MembershipFunction membershipFunction = this.membershipFunctionThisFuzzy.Find(membershipFunctionName);
+            MembershipFunction membershipFunction = this.membershipFunctionCentorid.Find(membershipFunctionName);
 
-            if ((membershipFunction.X0 <= this.ThisFuzzy) && (this.ThisFuzzy < membershipFunction.X1))
-                return (this.ThisFuzzy - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
-            else if ((membershipFunction.X1 <= this.ThisFuzzy) && (this.ThisFuzzy <= membershipFunction.X2))
+            if ((membershipFunction.X0 <= this.Centorid) && (this.Centorid < membershipFunction.X1))
+                return (this.Centorid - membershipFunction.X0) / (membershipFunction.X1 - membershipFunction.X0);
+            else if ((membershipFunction.X1 <= this.Centorid) && (this.Centorid <= membershipFunction.X2))
                 return 1;
-            else if ((membershipFunction.X2 < this.ThisFuzzy) && (this.ThisFuzzy <= membershipFunction.X3))
-                return (membershipFunction.X3 - this.ThisFuzzy) / (membershipFunction.X3 - membershipFunction.X2);
+            else if ((membershipFunction.X2 < this.Centorid) && (this.Centorid <= membershipFunction.X3))
+                return (membershipFunction.X3 - this.Centorid) / (membershipFunction.X3 - membershipFunction.X2);
             else
                 return 0;
         }
@@ -101,12 +101,12 @@ namespace fuzzyDataRelations
         /// <returns>The minimum value of the linguistic variable.</returns>
         public double MinValue()
         {
-            double minValue = this.membershipFunctionThisFuzzy[0].X0;
+            double minValue = this.membershipFunctionCentorid[0].X0;
 
-            for (int i = 1; i < this.membershipFunctionThisFuzzy.Count; i++)
+            for (int i = 1; i < this.membershipFunctionCentorid.Count; i++)
             {
-                if (this.membershipFunctionThisFuzzy[i].X0 < minValue)
-                    minValue = this.membershipFunctionThisFuzzy[i].X0;
+                if (this.membershipFunctionCentorid[i].X0 < minValue)
+                    minValue = this.membershipFunctionCentorid[i].X0;
             }
 
             return minValue;
@@ -118,12 +118,12 @@ namespace fuzzyDataRelations
         /// <returns>The maximum value of the linguistic variable.</returns>
         public double MaxValue()
         {
-            double maxValue = this.membershipFunctionThisFuzzy[0].X3;
+            double maxValue = this.membershipFunctionCentorid[0].X3;
 
-            for (int i = 1; i < this.membershipFunctionThisFuzzy.Count; i++)
+            for (int i = 1; i < this.membershipFunctionCentorid.Count; i++)
             {
-                if (this.membershipFunctionThisFuzzy[i].X3 > maxValue)
-                    maxValue = this.membershipFunctionThisFuzzy[i].X3;
+                if (this.membershipFunctionCentorid[i].X3 > maxValue)
+                    maxValue = this.membershipFunctionCentorid[i].X3;
             }
 
             return maxValue;
