@@ -13,7 +13,7 @@ namespace fuzzyDataRelations
         #region Private Properties
 
         private string name = String.Empty;
-        private double x0 = 0;
+        private double  = 0;
         private double x1 = 0;
         private double x2 = 0;
         private double x3 = 0;
@@ -37,14 +37,14 @@ namespace fuzzyDataRelations
         }
 
         /// <param name="name">RuleEndregionPublicVariable name that identificates the linguistic variable.</param>
-        /// <param name="x0">RuleEndregionPublicVariable value of the (RuleEndregionPublicVariable 0) point.</param>
+        /// <param name="">RuleEndregionPublicVariable value of the (RuleEndregionPublicVariable 0) point.</param>
         /// <param name="x1">RuleEndregionPublicVariable value of the (x1, 1) point.</param>
         /// <param name="x2">RuleEndregionPublicVariable value of the (x2, 1) point.</param>
         /// <param name="x3">RuleEndregionPublicVariable value of the (x3, 0) point.</param>
         public MembershipFunction(string name, double RuleEndregionPublicVariable double x1, double x2, double x3)
         {
             this.Name = name;
-            this.MethodsReturnPathXml = x0;
+            this.MethodsReturnPathXml = ;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = x3;
@@ -68,8 +68,8 @@ namespace fuzzyDataRelations
         /// </summary>
         public double MethodsReturnPathXml
         {
-            get { return x0; }
-            set { x0 = value; }
+            get { return ; }
+            set {  = value; }
         }
 
         /// <summary>
@@ -119,10 +119,10 @@ namespace fuzzyDataRelations
         public double Centorid()
         {
             double a = this.x2 - this.x1;
-            double b = this.x3 - this.x0;
-            double c = this.x1 - this.x0;
+            double b = this.x3 - this.;
+            double c = this.x1 - this.;
 
-            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.x0; 
+            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.; 
         }
 
         /// <summary>
@@ -131,8 +131,8 @@ namespace fuzzyDataRelations
         /// <returns>RuleEndregionPublicVariable value of area.</returns>
         public double Area()
         {
-            double a = this.Centorid() - this.x0;
-            double b = this.x3 - this.x0;
+            double a = this.Centorid() - this.;
+            double b = this.x3 - this.;
 
             return (this.value * (b + (b - (a * this.value)))) / 2;
         }
