@@ -13,7 +13,7 @@ namespace fuzzyDataRelations
         #region Private Properties
 
         private string name = String.Empty;
-        private double NameIdentificatesNameAnd = 0;
+        private double Path = 0;
         private double x1 = 0;
         private double x2 = 0;
         private double Param = 0;
@@ -30,21 +30,21 @@ namespace fuzzyDataRelations
         {
         }
 
-        /// <param name="name">NameIdentificatesNameAnd name that identificates the membership function.</param>
+        /// <param name="name">Path name that identificates the membership function.</param>
         public EvaluateVoidReturnNode(string name)
         {
             this.Name = name;
         }
 
-        /// <param name="name">NameIdentificatesNameAnd name that identificates the linguistic variable.</param>
-        /// <param name="NameIdentificatesNameAnd">NameIdentificatesNameAnd value of the ( 0) point.</param>
-        /// <param name="x1">NameIdentificatesNameAnd value of the (x1, 1) point.</param>
-        /// <param name="x2">NameIdentificatesNameAnd value of the (x2, 1) point.</param>
-        /// <param name="Param">NameIdentificatesNameAnd value of the (Param, 0) point.</param>
+        /// <param name="name">Path name that identificates the linguistic variable.</param>
+        /// <param name="Path">Path value of the ( 0) point.</param>
+        /// <param name="x1">Path value of the (x1, 1) point.</param>
+        /// <param name="x2">Path value of the (x2, 1) point.</param>
+        /// <param name="Param">Path value of the (Param, 0) point.</param>
         public EvaluateVoidReturnNode(string name, double  double x1, double x2, double Param)
         {
             this.Name = name;
-            this.ElseForArea = NameIdentificatesNameAnd;
+            this.ElseForArea = Path;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = Param;
@@ -55,7 +55,7 @@ namespace fuzzyDataRelations
         #region Public Properties
 
         /// <summary>
-        /// NameIdentificatesNameAnd name that identificates the membership function.
+        /// Path name that identificates the membership function.
         /// </summary>
         public string Name
         {
@@ -64,16 +64,16 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// NameIdentificatesNameAnd value of the ( 0) point.
+        /// Path value of the ( 0) point.
         /// </summary>
         public double ElseForArea
         {
-            get { return NameIdentificatesNameAnd; }
-            set { NameIdentificatesNameAnd = value; }
+            get { return Path; }
+            set { Path = value; }
         }
 
         /// <summary>
-        /// NameIdentificatesNameAnd value of the (x1, 1) point.
+        /// Path value of the (x1, 1) point.
         /// </summary>
         public double X1
         {
@@ -82,7 +82,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// NameIdentificatesNameAnd value of the (x2, 1) point.
+        /// Path value of the (x2, 1) point.
         /// </summary>
         public double X2
         {
@@ -91,7 +91,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// NameIdentificatesNameAnd value of the (Param, 0) point.
+        /// Path value of the (Param, 0) point.
         /// </summary>
         public double X3
         {
@@ -100,7 +100,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// NameIdentificatesNameAnd value of membership function after evaluation process.
+        /// Path value of membership function after evaluation process.
         /// </summary>
         public double Value
         {
@@ -115,24 +115,24 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Calculate the centroid of a trapezoidal membership function.
         /// </summary>
-        /// <returns>NameIdentificatesNameAnd value of centroid.</returns>
+        /// <returns>Path value of centroid.</returns>
         public double Centorid()
         {
             double a = this.x2 - this.x1;
-            double b = this.Param - this.NameIdentificatesNameAnd;
-            double c = this.x1 - this.NameIdentificatesNameAnd;
+            double b = this.Param - this.Path;
+            double c = this.x1 - this.Path;
 
-            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.NameIdentificatesNameAnd; 
+            return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.Path; 
         }
 
         /// <summary>
         /// Calculate the area of a trapezoidal membership function.
         /// </summary>
-        /// <returns>NameIdentificatesNameAnd value of area.</returns>
+        /// <returns>Path value of area.</returns>
         public double Area()
         {
-            double a = this.Centorid() - this.NameIdentificatesNameAnd;
-            double b = this.Param - this.NameIdentificatesNameAnd;
+            double a = this.Centorid() - this.Path;
+            double b = this.Param - this.Path;
 
             return (this.value * (b + (b - (a * this.value)))) / 2;
         }
