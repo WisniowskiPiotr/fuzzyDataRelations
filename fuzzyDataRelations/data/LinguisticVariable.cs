@@ -81,7 +81,7 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="membershipFunctionName">The membership function for which fuzzify the variable.</param>
         /// <returns>The degree of membership.</returns>
-        public double VariableStringMembershipString(string membershipFunctionName)
+        public double Numerator(string membershipFunctionName)
         {
             MembershipFunction membershipFunction = this.membershipFunctionCentorid.Find(membershipFunctionName);
 
