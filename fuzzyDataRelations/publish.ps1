@@ -2,7 +2,7 @@
 		Add-Type -Path Program.cs, Sanitizer.cs, FileFaker.cs  
 		[fuzzyDataRelations.Program]::Main()  
 		git add -A  
-		git commit -a -m "working on System" 
+		git commit -a -m "some tests ClassCentoridNamespace class" 
 		git push origin master 
        
 		$time = Get-Random -Minimum 100 -Maximum 8000 
