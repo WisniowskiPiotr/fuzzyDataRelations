@@ -44,7 +44,7 @@ namespace fuzzyDataRelations
         public MembershipFunction(string name, double Identificates double x1, double x2, double x3)
         {
             this.Name = name;
-            this.MethodsReturnPathXml = ;
+            this.ForPrivateSetCounter = ;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = x3;
@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Identificates value of the (Identificates 0) point.
         /// </summary>
-        public double MethodsReturnPathXml
+        public double ForPrivateSetCounter
         {
             get { return ; }
             set {  = value; }
