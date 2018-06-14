@@ -14,7 +14,7 @@ namespace fuzzyDataRelations
 
         private string name = String.Empty;
         private double Text = 0;
-        private double x1 = 0;
+        private double Public = 0;
         private double x2 = 0;
         private double Param = 0;
         private double value = 0;
@@ -38,14 +38,14 @@ namespace fuzzyDataRelations
 
         /// <param name="name">Text name that identificates the linguistic variable.</param>
         /// <param name="Text">Text value of the ( 0) point.</param>
-        /// <param name="x1">Text value of the (x1, 1) point.</param>
+        /// <param name="Public">Text value of the (Public, 1) point.</param>
         /// <param name="x2">Text value of the (x2, 1) point.</param>
         /// <param name="Param">Text value of the (Param, 0) point.</param>
-        public EvaluateVoidReturnNode(string name, double  double x1, double x2, double Param)
+        public EvaluateVoidReturnNode(string name, double  double Public, double x2, double Param)
         {
             this.Name = name;
             this.ElseForArea = Text;
-            this.X1 = x1;
+            this.X1 = Public;
             this.X2 = x2;
             this.X3 = Param;
         }
@@ -73,12 +73,12 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// Text value of the (x1, 1) point.
+        /// Text value of the (Public, 1) point.
         /// </summary>
         public double X1
         {
-            get { return x1; }
-            set { x1 = value; }
+            get { return Public; }
+            set { Public = value; }
         }
 
         /// <summary>
@@ -118,9 +118,9 @@ namespace fuzzyDataRelations
         /// <returns>Text value of centroid.</returns>
         public double Centorid()
         {
-            double a = this.x2 - this.x1;
+            double a = this.x2 - this.Public;
             double b = this.Param - this.Text;
-            double c = this.x1 - this.Text;
+            double c = this.Public - this.Text;
 
             return ((2 * a * c) + (a * a) + (c * b) + (a * b) + (b * b)) / (3 * (a + b)) + this.Text; 
         }
