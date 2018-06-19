@@ -30,18 +30,18 @@ namespace fuzzyDataRelations
         {
         }
 
-        /// <param name="name">Identificates name that identificates the membership function.</param>
+        /// <param name="name">Value name that identificates the membership function.</param>
         public MembershipFunction(string name)
         {
             this.Name = name;
         }
 
-        /// <param name="name">Identificates name that identificates the linguistic variable.</param>
-        /// <param name="">Identificates value of the (Identificates 0) point.</param>
-        /// <param name="x1">Identificates value of the (x1, 1) point.</param>
-        /// <param name="x2">Identificates value of the (x2, 1) point.</param>
-        /// <param name="x3">Identificates value of the (x3, 0) point.</param>
-        public MembershipFunction(string name, double Identificates double x1, double x2, double x3)
+        /// <param name="name">Value name that identificates the linguistic variable.</param>
+        /// <param name="">Value value of the (Value 0) point.</param>
+        /// <param name="x1">Value value of the (x1, 1) point.</param>
+        /// <param name="x2">Value value of the (x2, 1) point.</param>
+        /// <param name="x3">Value value of the (x3, 0) point.</param>
+        public MembershipFunction(string name, double Value double x1, double x2, double x3)
         {
             this.Name = name;
             this.ForPrivateSetCounter = ;
@@ -55,7 +55,7 @@ namespace fuzzyDataRelations
         #region Public Properties
 
         /// <summary>
-        /// Identificates name that identificates the membership function.
+        /// Value name that identificates the membership function.
         /// </summary>
         public string Name
         {
@@ -64,7 +64,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// Identificates value of the (Identificates 0) point.
+        /// Value value of the (Value 0) point.
         /// </summary>
         public double ForPrivateSetCounter
         {
@@ -73,7 +73,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// Identificates value of the (x1, 1) point.
+        /// Value value of the (x1, 1) point.
         /// </summary>
         public double X1
         {
@@ -82,7 +82,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// Identificates value of the (x2, 1) point.
+        /// Value value of the (x2, 1) point.
         /// </summary>
         public double X2
         {
@@ -91,7 +91,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// Identificates value of the (x3, 0) point.
+        /// Value value of the (x3, 0) point.
         /// </summary>
         public double X3
         {
@@ -100,7 +100,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// Identificates value of membership function after evaluation process.
+        /// Value value of membership function after evaluation process.
         /// </summary>
         public double Value
         {
@@ -115,7 +115,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Calculate the centroid of a trapezoidal membership function.
         /// </summary>
-        /// <returns>Identificates value of centroid.</returns>
+        /// <returns>Value value of centroid.</returns>
         public double Centorid()
         {
             double a = this.x2 - this.x1;
@@ -128,8 +128,8 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Calculate the area of a trapezoidal membership function.
         /// </summary>
-        /// <returns>Identificates value of area.</returns>
-        public double Identificates()
+        /// <returns>Value value of area.</returns>
+        public double Value()
         {
             double a = this.Centorid() - this.;
             double b = this.x3 - this.;
