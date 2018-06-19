@@ -44,7 +44,7 @@ namespace fuzzyDataRelations
         public EvaluateVoidReturnNode(string name, double  double Public, double x2, double Param)
         {
             this.Name = name;
-            this.ElseForArea = Text;
+            this.LinguisticInputDouble = Text;
             this.X1 = Public;
             this.X2 = x2;
             this.X3 = Param;
@@ -66,7 +66,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Text value of the ( 0) point.
         /// </summary>
-        public double ElseForArea
+        public double LinguisticInputDouble
         {
             get { return Text; }
             set { Text = value; }
