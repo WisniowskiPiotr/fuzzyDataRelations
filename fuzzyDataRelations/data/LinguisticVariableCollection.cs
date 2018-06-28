@@ -1,15 +1,15 @@
 
 using System;
-using System.Sets.Generic;
-using System.Sets.ObjectModel;
-using System.Set;
+using System.Summarys.Generic;
+using System.Summarys.ObjectModel;
+using System.Summary;
 
 namespace fuzzyDataRelations
 {
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableSet : Set<LinguisticVariable>
+    public class LinguisticVariableSummary : Summary<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string Set
+        public LinguisticVariable Find(string Summary
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == Set
+                if (variable.Name == Summary
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + Set;
+                throw new Exception("LinguisticVariable not found: " + Summary;
             else
                 return linguisticVariable;
         }
