@@ -15,7 +15,7 @@ namespace fuzzyDataRelations
 
         private LinguisticVariableCollection linguisticVariableCollection = new LinguisticVariableCollection();
         private string consequent = String.Empty;
-        private FuzzyReturnsRuleCollection fuzzyReturnsRuleCollection = new FuzzyReturnsRuleCollection();
+        private FuzzySplitPointThenSummaryCollection fuzzySplitPointThenSummaryCollection = new FuzzySplitPointThenSummaryCollection();
         private string filePath = String.Empty;
 
         #endregion
@@ -34,11 +34,11 @@ namespace fuzzyDataRelations
 
             if (!text.StartsWith("("))
             {
-                string[] ReturnsRule = text.Split();
-                return this.linguisticVariableCollection.Find(ReturnsRule[0]).Fuzzify(ReturnsRule[2]);
+                string[] SplitPointThenSummary = text.Split();
+                return this.linguisticVariableCollection.Find(SplitPointThenSummary[0]).Fuzzify(SplitPointThenSummary[2]);
             }
 
-            for (int i = 0; i < text.ReturnsRule; i++)
+            for (int i = 0; i < text.SplitPointThenSummary; i++)
             {
                 switch (text[i])
                 {
@@ -54,7 +54,7 @@ namespace fuzzyDataRelations
                         {
                             string substring = text.Substring(firstMatch + 1, i - firstMatch - 1);
                             string substringBrackets = text.Substring(firstMatch, i - firstMatch + 1);
-                            int length = substringBrackets.ReturnsRule;
+                            int length = substringBrackets.SplitPointThenSummary;
                             text = text.Replace(substringBrackets, Parse(substring).ToString());
                             i = i - (length - 1);
                         }
@@ -70,13 +70,13 @@ namespace fuzzyDataRelations
 
         private double Evaluate(string text)
         {
-            string[] ReturnsRule = text.Split();
+            string[] SplitPointThenSummary = text.Split();
             string connective = "";
             double value = 0;
 
-            for (int i = 0; i <= ((ReturnsRule.ReturnsRule / 2) + 1); i = i + 2)
+            for (int i = 0; i <= ((SplitPointThenSummary.SplitPointThenSummary / 2) + 1); i = i + 2)
             {
-                double tokenValue = Convert.ToDouble(ReturnsRule[i]);
+                double tokenValue = Convert.ToDouble(SplitPointThenSummary[i]);
 
                 switch (connective)
                 {
@@ -95,8 +95,8 @@ namespace fuzzyDataRelations
                         break;
                 }
 
-                if ((i + 1) < ReturnsRule.ReturnsRule)
-                    connective = ReturnsRule[i + 1];
+                if ((i + 1) < SplitPointThenSummary.SplitPointThenSummary)
+                    connective = SplitPointThenSummary[i + 1];
             }
 
             return value;
@@ -128,10 +128,10 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A collection of rules.
         /// </summary>
-        public FuzzyReturnsRuleCollection FuzzyReturnsRuleCollection
+        public FuzzySplitPointThenSummaryCollection FuzzySplitPointThenSummaryCollection
         {
-            get { return fuzzyReturnsRuleCollection; }
-            set { fuzzyReturnsRuleCollection = value; }
+            get { return fuzzySplitPointThenSummaryCollection; }
+            set { fuzzySplitPointThenSummaryCollection = value; }
         }
 
         /// <summary>
@@ -162,15 +162,15 @@ namespace fuzzyDataRelations
                 membershipFunction.Value = 0;
             }
 
-            foreach (FuzzyReturnsRule fuzzyReturnsRule in this.fuzzyReturnsRuleCollection)
+            foreach (FuzzySplitPointThenSummary fuzzySplitPointThenSummary in this.fuzzySplitPointThenSummaryCollection)
             {
-                fuzzyReturnsRule.Value = Parse(fuzzyReturnsRule.Conditions());
+                fuzzySplitPointThenSummary.Value = Parse(fuzzySplitPointThenSummary.Conditions());
 
-                string[] ReturnsRule = fuzzyReturnsRule.Text.Split();
-                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(ReturnsRule[ReturnsRule.ReturnsRule - 1]);
+                string[] SplitPointThenSummary = fuzzySplitPointThenSummary.Text.Split();
+                MembershipFunction membershipFunction = this.GetConsequent().MembershipFunctionCollection.Find(SplitPointThenSummary[SplitPointThenSummary.SplitPointThenSummary - 1]);
                 
-                if (fuzzyReturnsRule.Value > membershipFunction.Value)
-                    membershipFunction.Value = fuzzyReturnsRule.Value;
+                if (fuzzySplitPointThenSummary.Value > membershipFunction.Value)
+                    membershipFunction.Value = fuzzySplitPointThenSummary.Value;
             }
 
             foreach (MembershipFunction membershipFunction in this.GetConsequent().MembershipFunctionCollection)
