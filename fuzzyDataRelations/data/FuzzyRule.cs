@@ -93,7 +93,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The value of the rule after the evaluation process.
         /// </summary>
-        public double Value
+        public double PublicMembershipInferential
         {
             get { return value; }
             set { this.value = value; }
