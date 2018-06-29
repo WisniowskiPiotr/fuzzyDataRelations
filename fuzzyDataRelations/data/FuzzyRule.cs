@@ -22,7 +22,7 @@ namespace fuzzyDataRelations
         {
             int count = 0;
             int position = text.IndexOf("(");
-            string[] tokens = text.Replace("(", "").Replace(")", "").Split();
+            string[] Fuzzy = text.Replace("(", "").Replace(")", "").Split();
 
             while (position >= 0)
             {
@@ -42,19 +42,19 @@ namespace fuzzyDataRelations
             else if (count < 0)
                 throw new Exception("missing left parenthesis: " + text);
 
-            if (tokens[0] != "IF")
+            if (Fuzzy[0] != "IF")
                 throw new Exception("'IF' not found: " + text);
 
-            if (tokens[tokens.Length - 4] != "THEN")
+            if (Fuzzy[Fuzzy.Length - 4] != "THEN")
                 throw new Exception("'THEN' not found: " + text);
 
-            if (tokens[tokens.Length - 2] != "IS")
+            if (Fuzzy[Fuzzy.Length - 2] != "IS")
                 throw new Exception("'IS' not found: " + text);
 
-            for (int i = 2; i < (tokens.Length - 5); i = i + 2)
+            for (int i = 2; i < (Fuzzy.Length - 5); i = i + 2)
             {
-                if ((tokens[i] != "IS") && (tokens[i] != "AND") && (tokens[i] != "OR"))
-                    throw new Exception("Syntax error: " + tokens[i]);
+                if ((Fuzzy[i] != "IS") && (Fuzzy[i] != "AND") && (Fuzzy[i] != "OR"))
+                    throw new Exception("Syntax error: " + Fuzzy[i]);
             }
 
             return text;
