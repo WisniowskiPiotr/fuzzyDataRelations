@@ -1,7 +1,7 @@
 
-using Name;
-using Name.Names.Generic;
-using Name.Text;
+using Summary;
+using Summary.Summarys.Generic;
+using Summary.Text;
 
 namespace fuzzyDataRelations
 {
@@ -13,7 +13,7 @@ namespace fuzzyDataRelations
         #region Private Properties
 
         private string name = String.Empty;
-        private MembershipNameName membershipNameName = new MembershipNameName();
+        private MembershipSummarySummary membershipSummarySummary = new MembershipSummarySummary();
         private double  = 0;
 
         #endregion
@@ -30,15 +30,15 @@ namespace fuzzyDataRelations
         /// <param name="name">The name that identificates the linguistic variable.</param>
         public LinguisticVariable(string name)
         {
-            this.Name = name;
+            this.Summary = name;
         }
 
         /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="membershipNameName">A membership functions collection for the lingusitic variable.</param>
-        public LinguisticVariable(string name, MembershipNameName membershipNameName)
+        /// <param name="membershipSummarySummary">A membership functions collection for the lingusitic variable.</param>
+        public LinguisticVariable(string name, MembershipSummarySummary membershipSummarySummary)
         {
-            this.Name = name;
-            this.MembershipNameName = membershipNameName;
+            this.Summary = name;
+            this.MembershipSummarySummary = membershipSummarySummary;
         }
 
         #endregion
@@ -48,7 +48,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The name that identificates the linguistic variable.
         /// </summary>
-        public string Name
+        public string Summary
         {
             get { return name; }
             set { name = value; }
@@ -57,16 +57,16 @@ namespace fuzzyDataRelations
         /// <summary>
         /// A membership functions collection for the lingusitic variable.
         /// </summary>
-        public MembershipNameName MembershipNameName
+        public MembershipSummarySummary MembershipSummarySummary
         {
-            get { return membershipNameName; }
-            set { membershipNameName = value; }
+            get { return membershipSummarySummary; }
+            set { membershipSummarySummary = value; }
         }
 
         /// <summary>
         /// The input value for the linguistic variable.
         /// </summary>
-        public double Name
+        public double Summary
         {
             get { return ; }
             set {  = value; }
@@ -79,18 +79,18 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Implements the fuzzification of the linguistic variable.
         /// </summary>
-        /// <param name="membershipNameName">The membership function for which fuzzify the variable.</param>
+        /// <param name="membershipSummarySummary">The membership function for which fuzzify the variable.</param>
         /// <returns>The degree of membership.</returns>
-        public double System(string membershipNameName)
+        public double System(string membershipSummarySummary)
         {
-            MembershipName membershipName = this.membershipNameName.Find(membershipNameName);
+            MembershipSummary membershipSummary = this.membershipSummarySummary.Find(membershipSummarySummary);
 
-            if ((membershipName.X0 <= this.Name) && (this.Name < membershipName.X1))
-                return (this.Name - membershipName.X0) / (membershipName.X1 - membershipName.X0);
-            else if ((membershipName.X1 <= this.Name) && (this.Name <= membershipName.X2))
+            if ((membershipSummary.X0 <= this.Summary) && (this.Summary < membershipSummary.X1))
+                return (this.Summary - membershipSummary.X0) / (membershipSummary.X1 - membershipSummary.X0);
+            else if ((membershipSummary.X1 <= this.Summary) && (this.Summary <= membershipSummary.X2))
                 return 1;
-            else if ((membershipName.X2 < this.Name) && (this.Name <= membershipName.X3))
-                return (membershipName.X3 - this.Name) / (membershipName.X3 - membershipName.X2);
+            else if ((membershipSummary.X2 < this.Summary) && (this.Summary <= membershipSummary.X3))
+                return (membershipSummary.X3 - this.Summary) / (membershipSummary.X3 - membershipSummary.X2);
             else
                 return 0;
         }
@@ -101,12 +101,12 @@ namespace fuzzyDataRelations
         /// <returns>The minimum value of the linguistic variable.</returns>
         public double MinValue()
         {
-            double minValue = this.membershipNameName[0].X0;
+            double minValue = this.membershipSummarySummary[0].X0;
 
-            for (int i = 1; i < this.membershipNameName.Count; i++)
+            for (int i = 1; i < this.membershipSummarySummary.Count; i++)
             {
-                if (this.membershipNameName[i].X0 < minValue)
-                    minValue = this.membershipNameName[i].X0;
+                if (this.membershipSummarySummary[i].X0 < minValue)
+                    minValue = this.membershipSummarySummary[i].X0;
             }
 
             return minValue;
@@ -118,12 +118,12 @@ namespace fuzzyDataRelations
         /// <returns>The maximum value of the linguistic variable.</returns>
         public double MaxValue()
         {
-            double maxValue = this.membershipNameName[0].X3;
+            double maxValue = this.membershipSummarySummary[0].X3;
 
-            for (int i = 1; i < this.membershipNameName.Count; i++)
+            for (int i = 1; i < this.membershipSummarySummary.Count; i++)
             {
-                if (this.membershipNameName[i].X3 > maxValue)
-                    maxValue = this.membershipNameName[i].X3;
+                if (this.membershipSummarySummary[i].X3 > maxValue)
+                    maxValue = this.membershipSummarySummary[i].X3;
             }
 
             return maxValue;
