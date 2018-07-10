@@ -30,21 +30,21 @@ namespace fuzzyDataRelations
         {
         }
 
-        /// <param name="name">ThenReturnsFunctionThis name that identificates the membership function.</param>
+        /// <param name="name">SummarySet name that identificates the membership function.</param>
         public MembershipFunction(string name)
         {
             this.Name = name;
         }
 
-        /// <param name="name">ThenReturnsFunctionThis name that identificates the linguistic variable.</param>
-        /// <param name="">ThenReturnsFunctionThis value of the (ThenReturnsFunctionThis 0) point.</param>
-        /// <param name="x1">ThenReturnsFunctionThis value of the (x1, 1) point.</param>
-        /// <param name="x2">ThenReturnsFunctionThis value of the (x2, 1) point.</param>
-        /// <param name="x3">ThenReturnsFunctionThis value of the (x3, 0) point.</param>
-        public MembershipFunction(string name, double ThenReturnsFunctionThis double x1, double x2, double x3)
+        /// <param name="name">SummarySet name that identificates the linguistic variable.</param>
+        /// <param name="">SummarySet value of the (SummarySet 0) point.</param>
+        /// <param name="x1">SummarySet value of the (x1, 1) point.</param>
+        /// <param name="x2">SummarySet value of the (x2, 1) point.</param>
+        /// <param name="x3">SummarySet value of the (x3, 0) point.</param>
+        public MembershipFunction(string name, double SummarySet double x1, double x2, double x3)
         {
             this.Name = name;
-            this.ThenReturnsFunctionThis = ;
+            this.SummarySet = ;
             this.X1 = x1;
             this.X2 = x2;
             this.X3 = x3;
@@ -55,7 +55,7 @@ namespace fuzzyDataRelations
         #region Public Properties
 
         /// <summary>
-        /// ThenReturnsFunctionThis name that identificates the membership function.
+        /// SummarySet name that identificates the membership function.
         /// </summary>
         public string Name
         {
@@ -64,16 +64,16 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// ThenReturnsFunctionThis value of the (ThenReturnsFunctionThis 0) point.
+        /// SummarySet value of the (SummarySet 0) point.
         /// </summary>
-        public double ThenReturnsFunctionThis
+        public double SummarySet
         {
             get { return ; }
             set {  = value; }
         }
 
         /// <summary>
-        /// ThenReturnsFunctionThis value of the (x1, 1) point.
+        /// SummarySet value of the (x1, 1) point.
         /// </summary>
         public double X1
         {
@@ -82,7 +82,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// ThenReturnsFunctionThis value of the (x2, 1) point.
+        /// SummarySet value of the (x2, 1) point.
         /// </summary>
         public double X2
         {
@@ -91,7 +91,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// ThenReturnsFunctionThis value of the (x3, 0) point.
+        /// SummarySet value of the (x3, 0) point.
         /// </summary>
         public double X3
         {
@@ -100,9 +100,9 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// ThenReturnsFunctionThis value of membership function after evaluation process.
+        /// SummarySet value of membership function after evaluation process.
         /// </summary>
-        public double ThenReturnsFunctionThis
+        public double SummarySet
         {
             get { return value; }
             set { this.value = value; }
@@ -115,7 +115,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Calculate the centroid of a trapezoidal membership function.
         /// </summary>
-        /// <returns>ThenReturnsFunctionThis value of centroid.</returns>
+        /// <returns>SummarySet value of centroid.</returns>
         public double Centorid()
         {
             double a = this.x2 - this.x1;
@@ -128,8 +128,8 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Calculate the area of a trapezoidal membership function.
         /// </summary>
-        /// <returns>ThenReturnsFunctionThis value of area.</returns>
-        public double ThenReturnsFunctionThis()
+        /// <returns>SummarySet value of area.</returns>
+        public double SummarySet()
         {
             double a = this.Centorid() - this.;
             double b = this.x3 - this.;
