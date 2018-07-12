@@ -7,7 +7,7 @@ namespace fuzzyDataRelations
     /// <summary>
     /// Represents a rule.
     /// </summary>
-    public class FuzzyRule
+    public class ValueRule
     {
         #region Private Properties
 
@@ -22,7 +22,7 @@ namespace fuzzyDataRelations
         {
             int count = 0;
             int position = text.IndexOf("(");
-            string[] Fuzzy = text.Replace("(", "").Replace(")", "").Split();
+            string[] Value = text.Replace("(", "").Replace(")", "").Split();
 
             while (position >= 0)
             {
@@ -42,19 +42,19 @@ namespace fuzzyDataRelations
             else if (count < 0)
                 throw new Exception("missing left parenthesis: " + text);
 
-            if (Fuzzy[0] != "IF")
+            if (Value[0] != "IF")
                 throw new Exception("'IF' not found: " + text);
 
-            if (Fuzzy[Fuzzy.Length - 4] != "THEN")
+            if (Value[Value.Length - 4] != "THEN")
                 throw new Exception("'THEN' not found: " + text);
 
-            if (Fuzzy[Fuzzy.Length - 2] != "IS")
+            if (Value[Value.Length - 2] != "IS")
                 throw new Exception("'IS' not found: " + text);
 
-            for (int i = 2; i < (Fuzzy.Length - 5); i = i + 2)
+            for (int i = 2; i < (Value.Length - 5); i = i + 2)
             {
-                if ((Fuzzy[i] != "IS") && (Fuzzy[i] != "AND") && (Fuzzy[i] != "OR"))
-                    throw new Exception("Syntax error: " + Fuzzy[i]);
+                if ((Value[i] != "IS") && (Value[i] != "AND") && (Value[i] != "OR"))
+                    throw new Exception("Syntax error: " + Value[i]);
             }
 
             return text;
@@ -67,12 +67,12 @@ namespace fuzzyDataRelations
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public FuzzyRule()
+        public ValueRule()
         {
         }
 
         /// <param name="text">The text of the rule.</param>
-        public FuzzyRule(string text)
+        public ValueRule(string text)
         {
             this.Text = text;
         }
