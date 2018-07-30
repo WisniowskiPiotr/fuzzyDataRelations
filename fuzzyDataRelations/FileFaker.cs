@@ -7,7 +7,7 @@ namespace fuzzyDataRelations
 {
     class FileFaker
     {
-        private static string filePath = "d:\\Gambit\\fuzzyDataRelations\\fuzzyDataRelations\\data\\";
+        private static string filePath = "d:\\fuzzyDataRelations\\fuzzyDataRelations\\data\\";
 
         public static void GetRandomFile(out string fileName, out string fileContent)
         {
