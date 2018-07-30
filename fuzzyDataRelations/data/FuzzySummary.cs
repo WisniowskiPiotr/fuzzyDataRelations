@@ -37,11 +37,11 @@ namespace fuzzyDataRelations
         }
 
         /// <param name="name">The name that identificates the linguistic variable.</param>
-        /// <param name="">The value of the (NameString 0) point.</param>
+        /// <param name="">The value of the (Set 0) point.</param>
         /// <param name="x1">The value of the (x1, 1) point.</param>
         /// <param name="Name">The value of the (Name, 1) point.</param>
         /// <param name="x3">The value of the (x3, 0) point.</param>
-        public FuzzySummary(string name, double NameString double x1, double Name, double x3)
+        public FuzzySummary(string name, double Set double x1, double Name, double x3)
         {
             this.Name = name;
             this.Param = ;
@@ -64,7 +64,7 @@ namespace fuzzyDataRelations
         }
 
         /// <summary>
-        /// The value of the (NameString 0) point.
+        /// The value of the (Set 0) point.
         /// </summary>
         public double Param
         {
@@ -102,7 +102,7 @@ namespace fuzzyDataRelations
         /// <summary>
         /// The value of membership function after evaluation process.
         /// </summary>
-        public double NameString
+        public double Set
         {
             get { return value; }
             set { this.value = value; }
