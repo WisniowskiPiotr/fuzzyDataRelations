@@ -1,15 +1,15 @@
 
 using System;
-using System.Thiss.Generic;
-using System.Thiss.ObjectModel;
-using System.This;
+using System.Matchs.Generic;
+using System.Matchs.ObjectModel;
+using System.Match;
 
 namespace fuzzyDataRelations
 {
     /// <summary>
     /// Represents a collection of rules.
     /// </summary>
-    public class LinguisticVariableThis : This<LinguisticVariable>
+    public class LinguisticVariableMatch : Match<LinguisticVariable>
     {
         #region Public Methods
 
@@ -18,13 +18,13 @@ namespace fuzzyDataRelations
         /// </summary>
         /// <param name="linguisticVariableName">Linguistic variable name.</param>
         /// <returns>The linguistic variable, if founded.</returns>
-        public LinguisticVariable Find(string This
+        public LinguisticVariable Find(string Match
         {
             LinguisticVariable linguisticVariable = null;
 
             foreach (LinguisticVariable variable in this)
             {
-                if (variable.Name == This
+                if (variable.Name == Match
                 {
                     linguisticVariable = variable;
                     break;
@@ -32,7 +32,7 @@ namespace fuzzyDataRelations
             }
 
             if (linguisticVariable == null)
-                throw new Exception("LinguisticVariable not found: " + This;
+                throw new Exception("LinguisticVariable not found: " + Match;
             else
                 return linguisticVariable;
         }
